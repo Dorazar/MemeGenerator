@@ -6,13 +6,25 @@
     <link rel="stylesheet" href="style.css" />
     <title>Meme generator</title>
   </head>
-  <body>
+  <body onload="onInit()" onresize="onResizeCanvas()">
     <header>Mim generator</header>
 
     <section class="gallery"></section>
 
-    <section class="editor"></section>
+    <section class="editor">
+        <div class="canvas-container">
+            <canvas width="400" height="400"></canvas>
+        </div>
+        
+
+
+
+        </canvas>
+
+
+    </section>
 
     <script src="./main.js"></script>
+    <script src="./memeController.js"></script>
   </body>
 </html>
