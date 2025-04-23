@@ -6,14 +6,21 @@
     <link rel="stylesheet" href="style.css" />
     <title>Meme generator</title>
   </head>
-  <body onload="onInit()" onresize="onResizeCanvas()">
-    <header>Mim generator</header>
+  <body onload="onInit()" onresize="onResizeCanvas()" onclick="getEvPos(event)">
+    <header>
+        <div class="logo">MemeGenerator</div>
+        <div class="gallery-nav">Gallery</div>
+        <div class="memes-nav">Memes</div>
+        <div class="about-nav">About</div>
+        <button onclick="onWriteOnCanvas()">a</button>
+        <button onclick="onDrawImg()">b</button>
+    </header>
 
     <section class="gallery"></section>
 
     <section class="editor">
         <div class="canvas-container">
-            <canvas width="400" height="400"></canvas>
+            <canvas width="300" height="300"></canvas>
         </div>
         
 
