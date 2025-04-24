@@ -17,8 +17,8 @@ var gMeme = {
   selectedLineIdx: 0,
   lines: [
     {
-      txt: 'I sometimes eat Falafel',
-      size: 20,
+      txt: '',
+      size: 80,
       color: 'red',
     },
   ],
@@ -28,7 +28,12 @@ function getMeme() {
   return gMeme
 }
 
-function findImgSelectedByMemeId() {
-  const img = gImgs.find((img) => img.id === gMeme.selectedImgId)
+function findImgSelectedByMemeId(id) {
+  const img = gImgs.find((img) => img.id === id)
   return img
+}
+
+function setLineTxt() {
+  let text = document.querySelector('.text-input')
+  gMeme.lines[0].txt = text.value
 }

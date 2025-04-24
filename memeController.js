@@ -11,9 +11,13 @@ function onInit() {
 }
 
 function renderMeme() {
-  const memeImgSource = findImgSelectedByMemeId().url
+  const {
+    selectedImgId,
+    lines: [{ txt, size, color }],
+  } = getMeme()
+
+  const memeImgSource = findImgSelectedByMemeId(selectedImgId).url
   onDrawImg(memeImgSource)
-  onWriteOnCanvas()
 }
 
 function onResizeCanvas() {
@@ -39,13 +43,11 @@ function onDrawImg(imgSource) {
 // onWriteOnCanvas()
 
 function onWriteOnCanvas() {
-  gCtx.font = '40px Verdana'
-  gCtx.fillStyle = 'yellow'
-
-  const txt = 'Hello look at me!!!'
+  gCtx.font = `${gMeme.lines[0].size}px Verdana`
+  gCtx.fillStyle = gMeme.lines[0].color
   //put the text in center
-  const textWidth = gCtx.measureText(txt).width
-  gCtx.fillText(txt, gElCanvas.width / 2 - textWidth / 2, 50)
+  const textWidth = gCtx.measureText(gMeme.lines[0].txt).width
+  gCtx.fillText(gMeme.lines[0].txt, gElCanvas.width / 2 - textWidth / 2, 80)
 }
 
 function getEvPos(ev) {
@@ -66,4 +68,9 @@ function getEvPos(ev) {
   }
   console.log(pos)
   return pos
+}
+
+function onSetLineTxt() {
+  setLineTxt()
+  renderMeme()
 }
