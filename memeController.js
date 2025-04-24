@@ -1,48 +1,51 @@
 'use strict'
 
 var gElCanvas = document.querySelector('canvas')
-var gCtx=gElCanvas.getContext('2d')
-
+var gCtx = gElCanvas.getContext('2d')
 
 function onInit() {
   // gElCanvas = document.querySelector('canvas')
   // gCtx = gElCanvas.getContext('2d')
-  //   onDrawImg()
-
   onResizeCanvas()
+  renderMeme()
 }
 
 function renderMeme() {
-  // לצייר תמונה על הקנבס ולכתוב טקסט על הקנבס
-  // renders an image on the canvas and a line of text on top
+  const memeImgSource = findImgSelectedByMemeId().url
+  onDrawImg(memeImgSource)
+  onWriteOnCanvas()
 }
 
 function onResizeCanvas() {
   const elContainer = document.querySelector('.canvas-container')
-  gElCanvas.width = elContainer.offsetWidth
-  gElCanvas.height = elContainer.offsetHeight
+  gElCanvas.width = elContainer.clientWidth
+  renderMeme()
 }
 
-onDrawImg()
+// onDrawImg()
 
-function onDrawImg() {
+function onDrawImg(imgSource) {
   const img = new Image()
-  img.src = 'meme-imgs/meme-imgs (square)/1.jpg'
+  img.src = imgSource
   img.onload = () => {
     gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    onWriteOnCanvas()
   }
 }
 
 // add write on canvas to onchange
 
-onWriteOnCanvas()
+// onWriteOnCanvas()
 
 function onWriteOnCanvas() {
-  gCtx.font = '50px Verdana'
-  gCtx.fillStyle = 'blue'
-  const txt = 'abc'
-  gCtx.fillText(txt, gElCanvas.width / 2 - txt.length, 50)
+  gCtx.font = '40px Verdana'
+  gCtx.fillStyle = 'yellow'
+
+  const txt = 'Hello look at me!!!'
+  //put the text in center
+  const textWidth = gCtx.measureText(txt).width
+  gCtx.fillText(txt, gElCanvas.width / 2 - textWidth / 2, 50)
 }
 
 function getEvPos(ev) {
