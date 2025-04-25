@@ -25,9 +25,9 @@
 
     <section class="editor">
         <input class="text-input" name="txt" id="txt" placeholder="write it!" oninput="onSetLineTxt()">
-        <input type="color" name="colorPicker" id="colorPicker" oninput="onColorPicker(this.value)">
-        <button>b</button>
-        <button>c</button>
+        <input type="color" name="colorPicker" id="colorPicker" onchange="onColorPicker(this.value)">
+        <button onclick="onSetFontSize(3)">Font +</button>
+        <button onclick="onSetFontSize(-3)">Font -</button>
         <div class="canvas-container">
             <canvas width="300" height="300"></canvas>
         </div>

@@ -13,10 +13,7 @@ function onInit() {
 }
 
 function renderMeme() {
-  const {
-    selectedImgId,
-    lines: [{ txt, size, color }],
-  } = getMeme()
+  const { selectedImgId } = getMeme()
 
   const memeImgSource = findImgSelectedByMemeId(selectedImgId).url
   onDrawImg(memeImgSource)
@@ -102,5 +99,10 @@ function onDownloadCanvas(elLink) {
 
 function onColorPicker(value) {
   setColor(value)
+  renderMeme()
+}
+
+function onSetFontSize(value) {
+  setFontSize(value)
   renderMeme()
 }
