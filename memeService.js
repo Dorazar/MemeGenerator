@@ -1,4 +1,5 @@
 'use strict'
+
 var gImgs = [
   {
     id: 0,
@@ -23,7 +24,7 @@ var gMeme = {
   selectedLineIdx: 0,
   lines: [
     {
-      txt: '',
+      txt: 'Write it!',
       size: 20,
       color: '',
     },
@@ -41,7 +42,7 @@ function findImgSelectedByMemeId(id) {
 
 function setLineTxt() {
   let text = document.querySelector('.text-input')
-  gMeme.lines[0].txt = text.value
+  gMeme.lines[gMeme.selectedLineIdx].txt = text.value
 }
 
 function setImg(imgId) {
@@ -49,9 +50,24 @@ function setImg(imgId) {
 }
 
 function setColor(value) {
-  gMeme.lines[0].color = value
+  gMeme.lines[gMeme.selectedLineIdx].color = value
 }
 
 function setFontSize(value) {
-  gMeme.lines[0].size += value
+  gMeme.lines[gMeme.selectedLineIdx].size += value
 }
+
+function addTextLine() {
+  const newLine = {
+    txt: 'Write it!',
+    size: 20,
+    color: '',
+  }
+  gMeme.lines.push(newLine)
+  // gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+
+function switchLine() {
+  gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+

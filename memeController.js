@@ -42,11 +42,26 @@ function onDrawImg(imgSource) {
 // onWriteOnCanvas()
 
 function onWriteOnCanvas() {
-  gCtx.font = `${gMeme.lines[0].size}px Verdana`
-  gCtx.fillStyle = gMeme.lines[0].color
-  //put the text in center
-  const textWidth = gCtx.measureText(gMeme.lines[0].txt).width
-  gCtx.fillText(gMeme.lines[0].txt, gElCanvas.width / 2 - textWidth / 2, 80)
+  gMeme.lines.forEach((line, idx) => {
+    gCtx.font = `${line.size}px Verdana`
+    gCtx.fillStyle = line.color
+    // put the text in center
+    const textWidth = gCtx.measureText(line.txt).width
+
+    gCtx.fillText(line.txt, gElCanvas.width / 2 - textWidth / 2, 20 + 20 * idx)
+    //draw a frame around the selected line
+    if (gMeme.selectedLineIdx === idx) {
+      gCtx.strokeStyle = 'black'
+      gCtx.rect(
+        gElCanvas.width / 2 - textWidth / 2,
+        20 + 20 * idx - line.size,
+        // good
+        textWidth,
+        line.size + 2
+      )
+      gCtx.stroke()
+    }
+  })
 }
 
 function getEvPos(ev) {
@@ -105,4 +120,15 @@ function onColorPicker(value) {
 function onSetFontSize(value) {
   setFontSize(value)
   renderMeme()
+}
+
+function onAddTextLine() {
+  addTextLine()
+  // clean the text input after add new line
+  let text = document.querySelector('.text-input')
+  text.value = ''
+}
+
+function onSwitchLine() {
+  switchLine()
 }

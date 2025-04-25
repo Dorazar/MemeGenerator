@@ -24,10 +24,12 @@
     
 
     <section class="editor">
-        <input class="text-input" name="txt" id="txt" placeholder="write it!" oninput="onSetLineTxt()">
-        <input type="color" name="colorPicker" id="colorPicker" onchange="onColorPicker(this.value)">
-        <button onclick="onSetFontSize(3)">Font +</button>
-        <button onclick="onSetFontSize(-3)">Font -</button>
+        <input class="text-input" name="txt" id="txt" placeholder="write it!" value="write it!" oninput="onSetLineTxt()">
+        <input type="color" name="colorPicker" id="colorPicker"  onchange="onColorPicker(this.value)">
+        <button onclick="onSetFontSize(2)">Font +</button>
+        <button onclick="onSetFontSize(-2)">Font -</button>
+        <button onclick="onAddTextLine()">Add New Line</button>
+        <button onclick="onSwitchLine()">Switch Line</button>
         <div class="canvas-container">
             <canvas width="300" height="300"></canvas>
         </div>
