@@ -25,7 +25,7 @@ var gMeme = {
     {
       txt: '',
       size: 80,
-      color: 'red',
+      color: '',
     },
   ],
 }
@@ -48,3 +48,6 @@ function setImg(imgId) {
   gMeme.selectedImgId = imgId
 }
 
+function setColor(value) {
+  gMeme.lines[0].color = value
+}

@@ -99,3 +99,8 @@ function onDownloadCanvas(elLink) {
   console.log(elLink.href)
   elLink.download = 'yourMeme'
 }
+
+function onColorPicker(value) {
+  setColor(value)
+  renderMeme()
+}
