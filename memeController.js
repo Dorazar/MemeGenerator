@@ -93,3 +93,9 @@ function onImgSelect(imgId) {
   renderMeme()
 }
 
+function onDownloadCanvas(elLink) {
+  const dataUrl = gElCanvas.toDataURL()
+  elLink.href = dataUrl
+  console.log(elLink.href)
+  elLink.download = 'yourMeme'
+}

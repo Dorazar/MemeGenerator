@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link rel="stylesheet" href="style.css" />
+    
     <title>Meme generator</title>
   </head>
   <body onload="onInit()" onresize="onResizeCanvas()" onclick="getEvPos(event)">
@@ -30,6 +32,7 @@
             <canvas width="300" height="300"></canvas>
         </div>
         </canvas>
+        <a href="#" onclick="onDownloadCanvas(this)">Download</a>
     </section>
 
     <section class="gallery">
