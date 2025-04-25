@@ -1,0 +1,30 @@
+'use strict'
+
+
+
+
+function renderGallery() {
+    
+    const elGalleryContainer = document.querySelector('.gallery')
+    elGalleryContainer.innerHTML = gImgs.map(img =>
+        `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`
+    )
+
+}
+
+
+function showGallery() {
+    gElGallery.style.display='block'
+}
+
+function hideGallery() {
+    gElGallery.style.display='none'
+}
+
+
+function onGalleryNav() {
+    hideMemeGenerator()
+    showGallery()
+    
+  }
+  

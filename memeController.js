@@ -1,13 +1,15 @@
 'use strict'
 
-var gElCanvas = document.querySelector('canvas')
-var gCtx = gElCanvas.getContext('2d')
-
+var gElCanvas
+var gCtx
+var gElGallery
+var gElEditor
 function onInit() {
-  // gElCanvas = document.querySelector('canvas')
-  // gCtx = gElCanvas.getContext('2d')
-  onResizeCanvas()
-  renderMeme()
+  gElCanvas = document.querySelector('canvas')
+  gCtx = gElCanvas.getContext('2d')
+  gElGallery = document.querySelector('.gallery')
+  gElEditor = document.querySelector('.editor')
+  renderGallery()
 }
 
 function renderMeme() {
@@ -66,7 +68,7 @@ function getEvPos(ev) {
       y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
     }
   }
-  console.log(pos)
+  // console.log(pos)
   return pos
 }
 
@@ -74,3 +76,20 @@ function onSetLineTxt() {
   setLineTxt()
   renderMeme()
 }
+
+function hideMemeGenerator() {
+  gElEditor.style.display = 'none'
+}
+
+function showMemeGenerator() {
+  gElEditor.style.display = 'block'
+}
+
+function onImgSelect(imgId) {
+  // const imgObj = findImgSelectedByMemeId(imgId)
+  hideGallery()
+  showMemeGenerator()
+  setImg(imgId)
+  renderMeme()
+}
+

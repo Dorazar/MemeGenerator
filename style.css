@@ -8,16 +8,26 @@ body{
 }
 
 .canvas-container {
-    /* background-color: red; */
+     /* background-color: red;  */
     width: 80vw;
    
 }
 
-
+.editor{
+    display:none;
+}
 
 canvas {
     border: 1px solid grey;
-    /* background-color: grey; */
+     /* background-color: grey;  */
 
 }
+
+
+.gallery > * {
+    width: 150px;
+    height: 100px;
+}
+
+
 

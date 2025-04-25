@@ -9,32 +9,40 @@
   <body onload="onInit()" onresize="onResizeCanvas()" onclick="getEvPos(event)">
     <header>
         <div class="logo">MemeGenerator</div>
-        <div class="gallery-nav">Gallery</div>
+        <div class="gallery-nav" onclick="onGalleryNav()">Gallery</div>
         <div class="memes-nav">Memes</div>
         <div class="about-nav">About</div>
-    <input class="text-input" name="txt" id="txt" placeholder="write it!" oninput="onSetLineTxt()">
+   
       
     </header>
 
 
     
 
-    <section class="gallery"></section>
+    
 
     <section class="editor">
+        <input class="text-input" name="txt" id="txt" placeholder="write it!" oninput="onSetLineTxt()">
+        <button>a</button>
+        <button>b</button>
+        <button>c</button>
         <div class="canvas-container">
             <canvas width="300" height="300"></canvas>
         </div>
-        
-
-
-
         </canvas>
-
-
     </section>
+
+    <section class="gallery">
+        <!-- <img src="meme-imgs/meme-imgs (various aspect ratios)/2.jpg" alt="">
+        <img src="meme-imgs/meme-imgs (various aspect ratios)/5.jpg" alt=""> -->
+    </section>
+    
     <script src="./memeService.js"></script>
+    <script src="./galleryService.js"></script>
+
     <script src="./memeController.js"></script>
+    <script src="./galleryController.js"></script>
+
    
   </body>
 </html>
