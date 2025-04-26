@@ -55,8 +55,9 @@ function onWriteOnCanvas() {
       gCtx.rect(
         gElCanvas.width / 2 - textWidth / 2,
         20 + 20 * idx - line.size,
-        // good
+        //  width
         textWidth,
+        //
         line.size + 2
       )
       gCtx.stroke()
@@ -71,6 +72,7 @@ function onWriteOnCanvas() {
 }
 
 function getEvPos(ev) {
+  
   let pos = {
     x: ev.offsetX,
     y: ev.offsetY,
@@ -105,7 +107,8 @@ function lineClicked(pos) {
   console.log(line)
 
   const lineIdx = findLineIdx(line)
-  console.log(lineIdx)
+  gMeme.selectedLineIdx = lineIdx
+  editLine(lineIdx)
 }
 
 function onSetLineTxt() {
@@ -157,4 +160,28 @@ function onAddTextLine() {
 
 function onSwitchLine() {
   switchLine()
+}
+
+function editLine(lineIdx) {
+  var line = gMeme.lines[lineIdx]
+  drawRect(
+    line.pos.xStart,
+    line.pos.yStart,
+    line.pos.xEnd - line.pos.xStart,
+    line.pos.yEnd - line.pos.yStart
+  )
+  let text = document.querySelector('.text-input')
+  text.value = gMeme.lines[lineIdx].txt
+}
+
+function drawRect(xStart, yStart, xEnd, yEnd) {
+  gCtx.strokeStyle = 'black'
+  gCtx.rect(
+    xStart,
+    yStart,
+    // good
+    xEnd,
+    yEnd
+  )
+  gCtx.stroke()
 }
