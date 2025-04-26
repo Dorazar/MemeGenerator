@@ -59,7 +59,7 @@ function setFontSize(value) {
 
 function addTextLine() {
   const newLine = {
-    txt: 'Write it!',
+    txt: 'write it!',
     size: 20,
     color: '',
   }

@@ -86,14 +86,14 @@ function getEvPos(ev) {
       y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
     }
   }
-
+  console.log(pos)
   lineClicked(pos)
   return pos
 }
 
 function lineClicked(pos) {
-  if (!gMeme.lines[0].pos) return
-  console.log(pos)
+  if (!gMeme.lines[gMeme.selectedLineIdx].pos) return
+
   var line = gMeme.lines.find(
     (line) =>
       (line.pos.xStart <= pos.x) &
@@ -101,7 +101,11 @@ function lineClicked(pos) {
       (line.pos.yStart <= pos.y) &
       (line.pos.yEnd >= pos.y)
   )
+
   console.log(line)
+  // const lineIdx = findLineIdx(line)
+
+  // gMeme.selectedLineIdx = lineIdx
 }
 
 function onSetLineTxt() {
@@ -146,7 +150,9 @@ function onAddTextLine() {
   addTextLine()
   // clean the text input after add new line
   let text = document.querySelector('.text-input')
-  text.value = ''
+  switchLine()
+  text.value = gMeme.lines[gMeme.selectedLineIdx].txt
+  renderMeme()
 }
 
 function onSwitchLine() {
