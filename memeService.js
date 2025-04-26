@@ -71,3 +71,7 @@ function switchLine() {
   gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
+function findLineIdx(searchLine) {
+  const lineIdx = gMeme.lines.findIndex((line) => line === searchLine)
+  return lineIdx
+}

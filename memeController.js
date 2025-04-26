@@ -101,11 +101,11 @@ function lineClicked(pos) {
       (line.pos.yStart <= pos.y) &
       (line.pos.yEnd >= pos.y)
   )
-
+  if (!line) return
   console.log(line)
-  // const lineIdx = findLineIdx(line)
 
-  // gMeme.selectedLineIdx = lineIdx
+  const lineIdx = findLineIdx(line)
+  console.log(lineIdx)
 }
 
 function onSetLineTxt() {
@@ -158,4 +158,3 @@ function onAddTextLine() {
 function onSwitchLine() {
   switchLine()
 }
-
