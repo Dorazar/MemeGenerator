@@ -6,9 +6,12 @@
 function renderGallery() {
     
     const elGalleryContainer = document.querySelector('.gallery')
-    elGalleryContainer.innerHTML = gImgs.map(img =>
-        `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`
-    )
+    elGalleryContainer.innerHTML = gImgs
+      .map(
+        (img) =>
+          `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`
+      )
+      .join('')
 
 }
 
