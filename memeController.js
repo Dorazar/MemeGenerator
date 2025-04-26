@@ -45,9 +45,9 @@ function onWriteOnCanvas() {
   gMeme.lines.forEach((line, idx) => {
     gCtx.font = `${line.size}px Verdana`
     gCtx.fillStyle = line.color
+
     // put the text in center
     const textWidth = gCtx.measureText(line.txt).width
-
     gCtx.fillText(line.txt, gElCanvas.width / 2 - textWidth / 2, 20 + 20 * idx)
     //draw a frame around the selected line
     if (gMeme.selectedLineIdx === idx) {
@@ -60,6 +60,12 @@ function onWriteOnCanvas() {
         line.size + 2
       )
       gCtx.stroke()
+    }
+    line.pos = {
+      xStart: gElCanvas.width / 2 - textWidth / 2,
+      yStart: 20 + 20 * idx - line.size,
+      xEnd: gElCanvas.width / 2 - textWidth / 2 + textWidth,
+      yEnd: line.size + 2 + 20 + 20 * idx - line.size,
     }
   })
 }
@@ -80,8 +86,22 @@ function getEvPos(ev) {
       y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
     }
   }
-  // console.log(pos)
+
+  lineClicked(pos)
   return pos
+}
+
+function lineClicked(pos) {
+  if (!gMeme.lines[0].pos) return
+  console.log(pos)
+  var line = gMeme.lines.find(
+    (line) =>
+      (line.pos.xStart <= pos.x) &
+      (line.pos.xEnd >= pos.x) &
+      (line.pos.yStart <= pos.y) &
+      (line.pos.yEnd >= pos.y)
+  )
+  console.log(line)
 }
 
 function onSetLineTxt() {
@@ -132,3 +152,4 @@ function onAddTextLine() {
 function onSwitchLine() {
   switchLine()
 }
+
