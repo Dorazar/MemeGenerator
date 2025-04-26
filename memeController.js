@@ -1,5 +1,7 @@
 'use strict'
 
+var gIsEditMode = false
+
 var gElCanvas
 var gCtx
 var gElGallery
@@ -50,7 +52,8 @@ function onWriteOnCanvas() {
     const textWidth = gCtx.measureText(line.txt).width
     gCtx.fillText(line.txt, gElCanvas.width / 2 - textWidth / 2, 20 + 20 * idx)
     //draw a frame around the selected line
-    if (gMeme.selectedLineIdx === idx) {
+
+    if (gIsEditMode && gMeme.selectedLineIdx === idx) {
       gCtx.strokeStyle = 'black'
       gCtx.rect(
         gElCanvas.width / 2 - textWidth / 2,
@@ -72,7 +75,6 @@ function onWriteOnCanvas() {
 }
 
 function getEvPos(ev) {
-  
   let pos = {
     x: ev.offsetX,
     y: ev.offsetY,
@@ -113,6 +115,7 @@ function lineClicked(pos) {
 
 function onSetLineTxt() {
   setLineTxt()
+  gIsEditMode = true
   renderMeme()
 }
 
@@ -151,9 +154,10 @@ function onSetFontSize(value) {
 
 function onAddTextLine() {
   addTextLine()
-  // clean the text input after add new line
-  let text = document.querySelector('.text-input')
   switchLine()
+  // clean the text input after add new line
+  gIsEditMode = true
+  let text = document.querySelector('.text-input')
   text.value = gMeme.lines[gMeme.selectedLineIdx].txt
   renderMeme()
 }
@@ -163,25 +167,18 @@ function onSwitchLine() {
 }
 
 function editLine(lineIdx) {
-  var line = gMeme.lines[lineIdx]
-  drawRect(
-    line.pos.xStart,
-    line.pos.yStart,
-    line.pos.xEnd - line.pos.xStart,
-    line.pos.yEnd - line.pos.yStart
-  )
+  gIsEditMode = true
+  renderMeme()
   let text = document.querySelector('.text-input')
   text.value = gMeme.lines[lineIdx].txt
 }
 
-function drawRect(xStart, yStart, xEnd, yEnd) {
-  gCtx.strokeStyle = 'black'
-  gCtx.rect(
-    xStart,
-    yStart,
-    // good
-    xEnd,
-    yEnd
-  )
-  gCtx.stroke()
+function onBlur() {
+  gIsEditMode = false
+  renderMeme()
+}
+
+function onFocus() {
+  gIsEditMode = true
+  renderMeme()
 }

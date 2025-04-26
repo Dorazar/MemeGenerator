@@ -29,18 +29,12 @@
         <button onclick="onSetFontSize(2)">Font +</button>
         <button onclick="onSetFontSize(-2)">Font -</button>
         <button onclick="onAddTextLine()">Add New Line</button>
-        <button onclick="onSwitchLine()">Switch Line</button>
+        <!-- <button onclick="onSwitchLine()">Switch Line</button> -->
         <div class="canvas-container">
             <canvas width="300" height="300" onclick="getEvPos(event)"></canvas>
         </div>
         <a href="#" onclick="onDownloadCanvas(this)">Download</a>
-        <div>
-          aaa
-        </div>
-        <div>
-          aaaa
-        </div>
-        <input class="text-input" name="txt" id="txt" placeholder="write it!" value="write it!" oninput="onSetLineTxt()">
+        <input class="text-input" name="txt" id="txt" placeholder="write it!" value="write it!" oninput="onSetLineTxt()" onfocus="onFocus()" onblur="onBlur()">
     </section>
 
     <section class="gallery">
