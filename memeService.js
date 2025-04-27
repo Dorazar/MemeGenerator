@@ -1,21 +1,38 @@
 'use strict'
 
+var gId = -1
+
 var gImgs = [
   {
-    id: 0,
+    id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/2.jpg',
-    keywords: ['funny', 'cat'],
+    keywords: ['funny', 'mountain'],
   },
   {
-    id: 1,
+    id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/5.jpg',
-    keywords: ['kid', 'yes'],
+    keywords: ['kid', 'yes', 'funny'],
   },
 
   {
-    id: 2,
+    id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/003.jpg',
     keywords: ['funny', 'trump'],
+  },
+  {
+    id: makeId(),
+    url: 'meme-imgs/meme-imgs (various aspect ratios)/004.jpg',
+    keywords: ['dogs', 'kiss'],
+  },
+  {
+    id: makeId(),
+    url: 'meme-imgs/meme-imgs (various aspect ratios)/005.jpg',
+    keywords: ['dog', 'baby'],
+  },
+  {
+    id: makeId(),
+    url: 'meme-imgs/meme-imgs (various aspect ratios)/006.jpg',
+    keywords: ['cat', 'keyboard'],
   },
 ]
 
@@ -74,4 +91,8 @@ function switchLine() {
 function findLineIdx(searchLine) {
   const lineIdx = gMeme.lines.findIndex((line) => line === searchLine)
   return lineIdx
+}
+
+function makeId() {
+  return (gId += 1)
 }

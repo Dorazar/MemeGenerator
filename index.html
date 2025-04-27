@@ -4,25 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
     
     <title>Meme generator</title>
   </head>
-  <body onload="onInit()" onresize="onResizeCanvas()" >
+  <body class="main-layout" class="main-layout" onload="onInit()" onresize="onResizeCanvas()" >
     <header>
         <div class="logo">MemeGenerator</div>
+        <nav>
         <div class="gallery-nav" onclick="onGalleryNav()">Gallery</div>
-        <div class="memes-nav">Memes</div>
+        <div class="memes-nav">My Saved Memes</div>
         <div class="about-nav">About</div>
-   
-      
+      </nav>
+
     </header>
-
-
-    
-
-    
-
     <section class="editor">
         <!-- <input class="text-input" name="txt" id="txt" placeholder="write it!" value="write it!" oninput="onSetLineTxt()"> -->
         <input type="color" name="colorPicker" id="colorPicker"  onchange="onColorPicker(this.value)">
@@ -44,7 +39,7 @@
     
     <script src="./memeService.js"></script>
     <script src="./galleryService.js"></script>
-
+    
     <script src="./memeController.js"></script>
     <script src="./galleryController.js"></script>
 
