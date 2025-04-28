@@ -11,6 +11,7 @@ function onInit() {
   gCtx = gElCanvas.getContext('2d')
   gElGallery = document.querySelector('.gallery')
   gElEditor = document.querySelector('.editor')
+
   renderGallery()
 }
 
@@ -124,7 +125,7 @@ function hideMemeGenerator() {
 }
 
 function showMemeGenerator() {
-  gElEditor.style.display = 'block'
+  gElEditor.style.display = 'grid'
 }
 
 function onImgSelect(imgId) {
@@ -132,6 +133,7 @@ function onImgSelect(imgId) {
   hideGallery()
   showMemeGenerator()
   setImg(imgId)
+  onResizeCanvas()
   renderMeme()
 }
 

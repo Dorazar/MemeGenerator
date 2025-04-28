@@ -8,18 +8,22 @@ body{
 }
 
 .canvas-container {
-     /* background-color: red;  */
-    width: 80vw;
    
+     /* background-color: red;  */
+    width: 100%;
+ 
 }
 
 .editor{
+ 
     display:none;
 }
 
 canvas {
+    width: 80%;
     border: 1px solid grey;
      /* background-color: grey;  */
+     border-radius: 20px ;
 
 }
 
@@ -98,4 +102,22 @@ nav {
    
     align-content: start;
     /* height:450px; */
+}
+
+
+.editor {
+    padding: 40px;
+    background-color: rgb(183, 229, 250);
+    grid-area: main-content;
+    grid-template-columns: 1fr 0.5fr;
+    height: fit-content;
+    
+    
+}
+
+.editor-btns{
+    display: grid;
+    width: fit-content;
+    grid-template-rows: repeat(5,1fr);
+    width: 100%;
 }

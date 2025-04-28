@@ -19,17 +19,22 @@
 
     </header>
     <section class="editor">
+      <div class="canvas-container">
+        <canvas width="300" height="300" onclick="getEvPos(event)"></canvas>
+    </div>
+      <div class="editor-btns">
         <!-- <input class="text-input" name="txt" id="txt" placeholder="write it!" value="write it!" oninput="onSetLineTxt()"> -->
+        <input class="text-input" name="txt" id="txt" placeholder="write it!" value="write it!" oninput="onSetLineTxt()" onfocus="onFocus()" onblur="onBlur()">
         <input type="color" name="colorPicker" id="colorPicker"  onchange="onColorPicker(this.value)">
         <button onclick="onSetFontSize(2)">Font +</button>
         <button onclick="onSetFontSize(-2)">Font -</button>
         <button onclick="onAddTextLine()">Add New Line</button>
-        <!-- <button onclick="onSwitchLine()">Switch Line</button> -->
-        <div class="canvas-container">
-            <canvas width="300" height="300" onclick="getEvPos(event)"></canvas>
-        </div>
         <a href="#" onclick="onDownloadCanvas(this)">Download</a>
-        <input class="text-input" name="txt" id="txt" placeholder="write it!" value="write it!" oninput="onSetLineTxt()" onfocus="onFocus()" onblur="onBlur()">
+
+      </div>
+        <!-- <button onclick="onSwitchLine()">Switch Line</button> -->
+        
+        
     </section>
 
     <section class="gallery">
