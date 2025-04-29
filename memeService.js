@@ -97,3 +97,8 @@ function makeId() {
   return (gId += 1)
 }
 
+function onLeftAlignMent() {
+  gMeme.lines[gMeme.selectedLineIdx].pos.xStart = 0
+  console.log(gMeme.lines[gMeme.selectedLineIdx].pos)
+  renderMeme()
+}

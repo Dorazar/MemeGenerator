@@ -51,7 +51,34 @@ function onWriteOnCanvas() {
 
     // put the text in center
     const textWidth = gCtx.measureText(line.txt).width
+
+    if (line.pos) {
+      gCtx.fillText(line.txt, line.pos.xStart, line.size + 20 * idx)
+
+      if (gIsEditMode && gMeme.selectedLineIdx === idx) {
+        gCtx.strokeStyle = 'black'
+        gCtx.rect(
+          line.pos.xStart,
+          line.size + 20 * idx - line.size,
+          //  width
+          textWidth,
+          //
+          line.size + 2
+        )
+        gCtx.stroke()
+      }
+
+      line.pos = {
+        xStart: line.pos.xStart,
+        yStart: line.pos.yStart,
+        xEnd: line.pos.xEnd,
+        yEnd: line.pos.yEnd,
+      }
+      return
+    }
+
     gCtx.fillText(line.txt, gElCanvas.width / 2 - textWidth / 2, line.size + 20 * idx)
+
     //draw a frame around the selected line
 
     if (gIsEditMode && gMeme.selectedLineIdx === idx) {
@@ -66,6 +93,7 @@ function onWriteOnCanvas() {
       )
       gCtx.stroke()
     }
+
     line.pos = {
       xStart: gElCanvas.width / 2 - textWidth / 2,
       yStart: line.size + 20 * idx - line.size,
@@ -102,10 +130,7 @@ function lineClicked(pos) {
 
   var line = gMeme.lines.find(
     (line) =>
-      (line.pos.xStart <= pos.x) &
-      (line.pos.xEnd >= pos.x) &
-      (line.pos.yStart <= pos.y) &
-      (line.pos.yEnd >= pos.y)
+      (line.pos.xStart <= pos.x) & (line.pos.xEnd >= pos.x) & (line.pos.yStart <= pos.y) & (line.pos.yEnd >= pos.y)
   )
   if (!line) return
   console.log(line)
@@ -183,5 +208,5 @@ function onBlur() {
 
 function onFocus() {
   gIsEditMode = true
-  renderMeme()
+  onWriteOnCanvas()
 }
