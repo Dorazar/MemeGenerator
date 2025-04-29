@@ -51,14 +51,14 @@ function onWriteOnCanvas() {
 
     // put the text in center
     const textWidth = gCtx.measureText(line.txt).width
-    gCtx.fillText(line.txt, gElCanvas.width / 2 - textWidth / 2, 20 + 20 * idx)
+    gCtx.fillText(line.txt, gElCanvas.width / 2 - textWidth / 2, line.size + 20 * idx)
     //draw a frame around the selected line
 
     if (gIsEditMode && gMeme.selectedLineIdx === idx) {
       gCtx.strokeStyle = 'black'
       gCtx.rect(
         gElCanvas.width / 2 - textWidth / 2,
-        20 + 20 * idx - line.size,
+        line.size + 20 * idx - line.size,
         //  width
         textWidth,
         //
@@ -68,10 +68,11 @@ function onWriteOnCanvas() {
     }
     line.pos = {
       xStart: gElCanvas.width / 2 - textWidth / 2,
-      yStart: 20 + 20 * idx - line.size,
+      yStart: line.size + 20 * idx - line.size,
       xEnd: gElCanvas.width / 2 - textWidth / 2 + textWidth,
-      yEnd: line.size + 2 + 20 + 20 * idx - line.size,
+      yEnd: line.size + 2 + line.size + 20 * idx - line.size,
     }
+    console.log(line.pos)
   })
 }
 
