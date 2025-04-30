@@ -53,17 +53,17 @@ function onWriteOnCanvas() {
     const textWidth = gCtx.measureText(line.txt).width
 
     if (line.pos) {
-      gCtx.fillText(line.txt, line.pos.xStart, line.size + 20 * idx)
+      gCtx.fillText(line.txt, line.pos.xStart, line.size + line.pos.yStart)
 
       if (gIsEditMode && gMeme.selectedLineIdx === idx) {
         gCtx.strokeStyle = 'black'
         gCtx.rect(
           line.pos.xStart,
-          line.size + 20 * idx - line.size,
+          line.pos.yStart,
           //  width
           textWidth,
           //
-          line.size + 2
+          line.size
         )
         gCtx.stroke()
       }
@@ -77,7 +77,7 @@ function onWriteOnCanvas() {
       return
     }
 
-    gCtx.fillText(line.txt, gElCanvas.width / 2 - textWidth / 2, line.size + 20 * idx)
+    gCtx.fillText(line.txt, gElCanvas.width / 2 - textWidth / 2, line.size)
 
     //draw a frame around the selected line
 
@@ -85,7 +85,7 @@ function onWriteOnCanvas() {
       gCtx.strokeStyle = 'black'
       gCtx.rect(
         gElCanvas.width / 2 - textWidth / 2,
-        line.size + 20 * idx - line.size,
+        line.size,
         //  width
         textWidth,
         //

@@ -71,7 +71,13 @@ function setColor(value) {
 }
 
 function setFontSize(value) {
+  var textWidth = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt).width
+  // console.log(textWidth)
+  // console.log(gMeme.lines[gMeme.selectedLineIdx].pos.xEnd)
   gMeme.lines[gMeme.selectedLineIdx].size += value
+  gMeme.lines[gMeme.selectedLineIdx].pos.xEnd = gMeme.lines[gMeme.selectedLineIdx].pos.xStart + textWidth
+  gMeme.lines[gMeme.selectedLineIdx].pos.yEnd += value
+  // console.log(gMeme.lines[gMeme.selectedLineIdx].pos)
 }
 
 function addTextLine() {
@@ -98,7 +104,29 @@ function makeId() {
 }
 
 function onLeftAlignMent() {
-  gMeme.lines[gMeme.selectedLineIdx].pos.xStart = 0
+  gMeme.lines[gMeme.selectedLineIdx].pos.xStart -= 10
+  gMeme.lines[gMeme.selectedLineIdx].pos.xEnd -= 10
   console.log(gMeme.lines[gMeme.selectedLineIdx].pos)
+  renderMeme()
+}
+
+function onRightAlignMent() {
+  gMeme.lines[gMeme.selectedLineIdx].pos.xStart += 10
+  gMeme.lines[gMeme.selectedLineIdx].pos.xEnd += 10
+  renderMeme()
+}
+
+function onTopAlignMent() {
+  console.log('hi')
+  gMeme.lines[gMeme.selectedLineIdx].pos.yStart += 10
+  gMeme.lines[gMeme.selectedLineIdx].pos.yEnd += 10
+  console.log(gMeme.lines[gMeme.selectedLineIdx].pos.yStart)
+  renderMeme()
+}
+
+function onBottomAlignMent() {
+  gMeme.lines[gMeme.selectedLineIdx].pos.yStart -= 10
+  gMeme.lines[gMeme.selectedLineIdx].pos.yEnd -= 10
+  console.log(gMeme.lines[gMeme.selectedLineIdx].pos.yStart)
   renderMeme()
 }
