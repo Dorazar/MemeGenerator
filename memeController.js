@@ -52,7 +52,7 @@ function onWriteOnCanvas() {
     gCtx.textBaseline = 'middle'
     gCtx.fillStyle = line.color
 
-    //if the line not on gMeme,create it on center
+    //if the line not on gMeme,create it on center with spacing
 
     if (line.pos == null) {
       line.pos = {}
