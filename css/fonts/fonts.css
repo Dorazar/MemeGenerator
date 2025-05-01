@@ -1,0 +1,19 @@
+@font-face {
+    font-family: lato;
+    src: url('./Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: pinyon;
+    src: url('./PinyonScript-Regular.ttf');
+}
+
+@font-face {
+    font-family: fascinateInline;
+    src: url('./FascinateInline-Regular.ttf');
+}
+
+@font-face {
+    font-family: audiowide;
+    src: url('./Audiowide-Regular.ttf');
+}

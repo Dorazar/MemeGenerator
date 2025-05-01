@@ -18,10 +18,13 @@ function renderGallery() {
 
 function showGallery() {
     gElGallery.style.display='block'
+
 }
 
 function hideGallery() {
     gElGallery.style.display='none'
+    renderMeme()
+ 
 }
 
 

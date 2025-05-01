@@ -47,7 +47,7 @@ function onDrawImg(imgSource) {
 function onWriteOnCanvas() {
   const lineSpacing = 10
   gMeme.lines.forEach((line, idx) => {
-    gCtx.font = `${line.size}px Verdana`
+    gCtx.font = `${line.size}px ${line.font}`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillStyle = line.color
@@ -84,8 +84,6 @@ function onWriteOnCanvas() {
     line.pos.yEnd = line.pos.y + line.size / 2
   })
 }
-
-
 
 function getEvPos(ev) {
   let pos = {
@@ -196,5 +194,10 @@ function onFocus() {
 
 function onDeleteLine() {
   gMeme.lines.splice(gMeme.lines[gMeme.selectedLineIdx], 1)
+  renderMeme()
+}
+
+function onFontChange(fontType = 'lato') {
+  gMeme.lines[gMeme.selectedLineIdx].font = fontType
   renderMeme()
 }

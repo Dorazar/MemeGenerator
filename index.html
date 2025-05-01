@@ -55,8 +55,18 @@
           <button class="material-symbols-outlined" onclick="onLeftAlignMent()">keyboard_tab_rtl</button>
           <button class="material-symbols-outlined" onclick="onRightAlignMent()">keyboard_tab</button>
           <button class="material-symbols-outlined" onclick="onTopAlignMent()">vertical_align_bottom</button>
-
           <button class="material-symbols-outlined" onclick="onBottomAlignMent()">vertical_align_top</button>
+
+          <label for="fonts" >Font choose</label>
+
+          <select id="fonts" onchange="onFontChange(this.value)" >
+            <option value="lato">Lato</option>
+            <option value="pinyon">Pinyon</option>
+            <option value="fascinateInline">FascinateInline</option>
+            <option value="audiowide">Audiowide</option>
+           
+          </select>
+         
         </div>
 
         <button>
