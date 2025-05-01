@@ -45,64 +45,47 @@ function onDrawImg(imgSource) {
 // onWriteOnCanvas()
 
 function onWriteOnCanvas() {
+  const lineSpacing = 10
   gMeme.lines.forEach((line, idx) => {
     gCtx.font = `${line.size}px Verdana`
+    gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'middle'
     gCtx.fillStyle = line.color
 
-    // put the text in center
+    //if the line not on gMeme,create it on center
+
+    if (line.pos == null) {
+      line.pos = {}
+      line.pos.x = gElCanvas.width / 2
+      line.pos.y = idx === 0 ? line.size : gMeme.lines[idx - 1].pos.y + line.size + lineSpacing
+    }
+
     const textWidth = gCtx.measureText(line.txt).width
 
-    if (line.pos) {
-      gCtx.fillText(line.txt, line.pos.xStart, line.size + line.pos.yStart)
-
-      if (gIsEditMode && gMeme.selectedLineIdx === idx) {
-        gCtx.strokeStyle = 'black'
-        gCtx.rect(
-          line.pos.xStart,
-          line.pos.yStart,
-          //  width
-          textWidth,
-          //
-          line.size
-        )
-        gCtx.stroke()
-      }
-
-      line.pos = {
-        xStart: line.pos.xStart,
-        yStart: line.pos.yStart,
-        xEnd: line.pos.xEnd,
-        yEnd: line.pos.yEnd,
-      }
-      return
-    }
-
-    gCtx.fillText(line.txt, gElCanvas.width / 2 - textWidth / 2, line.size)
-
-    //draw a frame around the selected line
+    gCtx.fillText(line.txt, line.pos.x, line.pos.y)
 
     if (gIsEditMode && gMeme.selectedLineIdx === idx) {
+      const pad = 5
+      const rectX = line.pos.x - textWidth / 2 - pad
+      const rectY = line.pos.y - line.size / 2 - pad
+      const rectW = textWidth + pad * 2
+      const rectH = line.size + pad * 2
+
+      gCtx.beginPath()
+      gCtx.setLineDash([5, 3])
       gCtx.strokeStyle = 'black'
-      gCtx.rect(
-        gElCanvas.width / 2 - textWidth / 2,
-        line.size,
-        //  width
-        textWidth,
-        //
-        line.size + 2
-      )
-      gCtx.stroke()
+      gCtx.strokeRect(rectX, rectY, rectW, rectH)
+      gCtx.setLineDash([])
     }
 
-    line.pos = {
-      xStart: gElCanvas.width / 2 - textWidth / 2,
-      yStart: line.size + 20 * idx - line.size,
-      xEnd: gElCanvas.width / 2 - textWidth / 2 + textWidth,
-      yEnd: line.size + 2 + line.size + 20 * idx - line.size,
-    }
-    console.log(line.pos)
+    line.pos.xStart = line.pos.x - textWidth / 2
+    line.pos.xEnd = line.pos.x + textWidth / 2
+    line.pos.yStart = line.pos.y - line.size / 2
+    line.pos.yEnd = line.pos.y + line.size / 2
   })
 }
+
+
 
 function getEvPos(ev) {
   let pos = {

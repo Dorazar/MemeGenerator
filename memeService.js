@@ -104,29 +104,25 @@ function makeId() {
 }
 
 function onLeftAlignMent() {
-  gMeme.lines[gMeme.selectedLineIdx].pos.xStart -= 10
-  gMeme.lines[gMeme.selectedLineIdx].pos.xEnd -= 10
-  console.log(gMeme.lines[gMeme.selectedLineIdx].pos)
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.pos.x -= 10
   renderMeme()
 }
 
 function onRightAlignMent() {
-  gMeme.lines[gMeme.selectedLineIdx].pos.xStart += 10
-  gMeme.lines[gMeme.selectedLineIdx].pos.xEnd += 10
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.pos.x += 10
   renderMeme()
 }
 
 function onTopAlignMent() {
-  console.log('hi')
-  gMeme.lines[gMeme.selectedLineIdx].pos.yStart += 10
-  gMeme.lines[gMeme.selectedLineIdx].pos.yEnd += 10
-  console.log(gMeme.lines[gMeme.selectedLineIdx].pos.yStart)
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.pos.y += 10
   renderMeme()
 }
 
 function onBottomAlignMent() {
-  gMeme.lines[gMeme.selectedLineIdx].pos.yStart -= 10
-  gMeme.lines[gMeme.selectedLineIdx].pos.yEnd -= 10
-  console.log(gMeme.lines[gMeme.selectedLineIdx].pos.yStart)
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.pos.y -= 10
   renderMeme()
 }
