@@ -193,3 +193,8 @@ function onFocus() {
   gIsEditMode = true
   onWriteOnCanvas()
 }
+
+function onDeleteLine() {
+  gMeme.lines.splice(gMeme.lines[gMeme.selectedLineIdx], 1)
+  renderMeme()
+}
