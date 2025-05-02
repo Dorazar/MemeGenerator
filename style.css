@@ -126,8 +126,29 @@ nav {
 .editor-btns{
     display: grid;
     width: fit-content;
-    grid-template-rows: 0.5fr 2fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     width: 100%;
 }
 
+
+.input-row{
+    padding-top: 1rem;
+    align-self: start;
+    justify-self: center;
+    width: 100%;
+    height: 100%;
+}
+
+.text-input{
+    height: 50%;
+    width: 100%;
+}
+
+.line-editors,.row-align-ediors,.font-choose{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-evenly;
+    align-content: center;
+    
+}
 

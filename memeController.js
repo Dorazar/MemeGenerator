@@ -25,6 +25,7 @@ function renderMeme() {
 function onResizeCanvas() {
   const elContainer = document.querySelector('.canvas-container')
   gElCanvas.width = elContainer.clientWidth
+  gMeme.lines.forEach((line) => (line.pos = null))
   renderMeme()
 }
 
