@@ -1,87 +1,73 @@
 @import url('/css/fonts/fonts.css');
 
-*{
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Comic Neue", cursive;
+@import url('/css/basics/colors.css');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Comic Neue', cursive;
 }
 
-body{
-    height: 100vh;
+body {
+  height: 100vh;
 }
 
 .canvas-container {
-   
   /* background-color: red;   */
-    width: 100%;
- 
+  width: 100%;
 }
 
-.editor{
- 
-    display:none;
+.editor {
+  display: none;
 }
 
 canvas {
-    width: 100%;
-    border: 1px solid grey;
-     /* background-color: grey;  */
-     border-radius: 10px ;
-
+  width: 100%;
+  border: 1px solid grey;
+  /* background-color: grey;  */
+  border-radius: 10px;
+  border-color: var(--text-color);
 }
-
-
-
-
-
-
 
 /* ---- */
 
-
-.main-layout{
-    background-color: rgb(192, 192, 191);
-    display: grid;
-    grid-template-columns: minmax(10px,1fr) minmax(auto,800px) minmax(10px,1fr);
-    grid-template-rows: 60px 1fr;
-    grid-template-areas: 
-    '. header .' 
-    '. main-content .'
-    ;
+.main-layout {
+  background-color: var(--main-background);
+  display: grid;
+  grid-template-columns: minmax(10px, 1fr) minmax(auto, 800px) minmax(10px, 1fr);
+  grid-template-rows: 60px 1fr;
+  grid-template-areas:
+    '. header .'
+    '. main-content .';
 }
 
-
-header{
-    
-    font-size: 1.3rem;
-    grid-area: header;
-    background-color: rgb(150, 149, 148);
-    display:grid;
-    grid-template-columns:minmax(10px,1fr) minmax(auto,400px) minmax(auto,400px) minmax(10px,1fr);
-    align-items: center;   
-     grid-column: 1/-1; 
+header {
+  color: var(--text-color);
+  font-size: 1.3rem;
+  grid-area: header;
+  background-color: var(--second-color);
+  display: grid;
+  grid-template-columns: minmax(10px, 1fr) minmax(auto, 400px) minmax(auto, 400px) minmax(10px, 1fr);
+  align-items: center;
+  grid-column: 1/-1;
 }
 
-.logo{
-    font-family: "Bungee", sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-   grid-column: 2/2;
-    justify-self: start;
-    align-self: center;
-    
+.logo {
+  font-family: 'Bungee', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  grid-column: 2/2;
+  justify-self: start;
+  align-self: center;
 }
 
 nav {
-    display: flex;
-    justify-content:space-evenly;
-    height: 100%;
-    align-items: center;
-    grid-column: 3/3;
-
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+  align-items: center;
+  grid-column: 3/3;
 }
-
-
 
 /* header > *:not(.logo){
     background-color: red;
@@ -91,82 +77,149 @@ nav {
 
 } */
 
-
 .gallery > * {
-    width: 150px;
-    height: 150px;
-    object-fit:cover;
-    
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
 }
 
 .gallery {
-    display: grid;
-    grid-area: main-content;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fit,150px);
-    /* grid-template-rows: repeat(5,150px); */
-    justify-content: center;
-   
-    align-content: start;
-    /* height:450px; */
+margin-top: 50px;
+  display: grid;
+  grid-area: main-content;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, 150px);
+  /* grid-template-rows: repeat(5,150px); */
+  justify-content: center;
+
+  align-content: start;
+  /* height:450px; */
 }
 
-#colorPicker{
-    height: 100%;
+#colorPicker {
+  height: 100%;
 }
 
 .editor {
-    gap: 10px;
-    padding: 10px;
-    background-color: rgb(183, 229, 250);
+  margin-top: 50px;
+  gap: 10px;
+  padding: 20px;
+  background-color: var(--second-color);
+  grid-area: main-content;
+  grid-template-columns: 1fr 0.5fr;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+.editor-btns {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: var(--text-color);
+
+  background-color: var(--main-background);
+  display: grid;
+  width: fit-content;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  width: 100%;
+}
+
+label {
+  color: var(--text-color);
+}
+
+.input-row {
+  display: grid;
+
+  width: 100%;
+  height: 100%;
+}
+
+.text-input {
+  align-self: center;
+  justify-self: center;
+  height: 40%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.line-editors,
+.row-align-ediors,
+.font-choose {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.font-choose {
+  display: grid;
+  grid-auto-flow: column;
+  align-content: center;
+}
+
+#fonts {
+  width: 100%;
+}
+
+@media (max-width: 450px) {
+  /* סגנונות עבור טלפונים ניידים */
+
+  *{
+    font-size: 0.8rem;
+  }
+
+
+  .main-layout {
+    background-color: var(--main-background);
+    display: grid;
+    grid-template-columns: minmax(10px, 1fr) minmax(370px   , 430px) minmax(10px, 1fr);
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+      '. header .'
+      '. main-content .';
+  }
+
+
+
+
+/* NAV */
+
+ 
+
+.gallery > * {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .gallery {
+    margin-top: 50px;
+    display: grid;
     grid-area: main-content;
-    grid-template-columns: 1fr 0.5fr;
-    height: fit-content;
-    
-    
-}
-
-.editor-btns{
-    display: grid;
-    width: fit-content;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    width: 100%;
-}
-
-
-.input-row{
-    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, 100px);
+    /* grid-template-rows: repeat(5,150px); */
+    justify-content: center;
   
-    width: 100%;
-    height: 100%;
-    
-}
-
-.text-input{
-    align-self: center;
-    justify-self: center;
-    height: 40%;
-    width: 100%;
-    border-radius:10px;
-}
-
-
-
-
-.line-editors,.row-align-ediors,.font-choose{
-    display: grid;
+    align-content: start;
+    /* height:450px; */
+  }
+  
+  .editor {
     grid-auto-flow: column;
-    justify-content: space-evenly;
-    align-content: center;
-    
-}
+    grid-template-rows: 1fr 1fr;
+  }
 
-.font-choose{
-    display: grid;
-    grid-auto-flow: column;
-    align-content: center;
-}
+  .editor .canvas-container {
+    grid-column: 1/-1;
+  }
 
-#fonts{
-   width: 100%;
+  .editor .editor-btns {
+    grid-column: 1/-1;
+  }
+
+
+
+
+
 }
