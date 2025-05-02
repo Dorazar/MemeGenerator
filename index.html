@@ -70,10 +70,10 @@
           <label for="fonts" >Font:</label>
 
           <select id="fonts" onchange="onFontChange(this.value)" >
-            <option value="lato">Lato</option>
-            <option value="pinyon">Pinyon</option>
-            <option value="fascinateInline">FascinateInline</option>
-            <option value="audiowide">Audiowide</option>
+            <option selected style="font-family: lato;" value="lato">Lato</option>
+            <option style="font-family: pinyon;" value="pinyon">Pinyon</option>
+            <option style="font-family: fascinateinline;" value="fascinateinline">FascinateInline</option>
+            <option style="font-family: audiowide;"value="audiowide">Audiowide</option>
            
           </select>
         </div>
@@ -87,7 +87,9 @@
       <!-- <button onclick="onSwitchLine()">Switch Line</button> -->
     </section>
 
-    <section class="gallery"></section>
+    <section class="gallery">
+      
+    </section>
 
     <script src="./memeService.js"></script>
     <script src="./galleryService.js"></script>

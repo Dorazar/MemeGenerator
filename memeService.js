@@ -44,7 +44,7 @@ var gMeme = {
       txt: 'write it!',
       size: 20,
       color: '',
-      font: 'lato',
+      font: 'Lato',
     },
   ],
 }
@@ -86,7 +86,7 @@ function addTextLine() {
     txt: 'write it!',
     size: 20,
     color: '',
-    font: 'lato',
+    font: 'Lato',
   }
   gMeme.lines.push(newLine)
   gMeme.selectedLineIdx = gMeme.lines.length - 1

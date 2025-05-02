@@ -1,7 +1,7 @@
 'use strict'
 
 var gIsEditMode = false
-
+var gIsRandomMeme = false
 var gElCanvas
 var gCtx
 var gElGallery
@@ -17,7 +17,6 @@ function onInit() {
 
 function renderMeme() {
   const { selectedImgId } = getMeme()
-
   const memeImgSource = findImgSelectedByMemeId(selectedImgId).url
   onDrawImg(memeImgSource)
 }
@@ -137,11 +136,15 @@ function showMemeGenerator() {
 }
 
 function onImgSelect(imgId) {
-  // const imgObj = findImgSelectedByMemeId(imgId)
   hideGallery()
   showMemeGenerator()
   setImg(imgId)
   onResizeCanvas()
+
+  if (!gIsRandomMeme) {
+    resetTextLine()
+  }
+  gIsRandomMeme = false
   renderMeme()
 }
 
@@ -184,11 +187,13 @@ function editLine(lineIdx) {
 }
 
 function onBlur() {
+  console.log('blur')
   gIsEditMode = false
   renderMeme()
 }
 
 function onFocus() {
+  console.log('focus')
   gIsEditMode = true
   onWriteOnCanvas()
 }
@@ -199,6 +204,9 @@ function onDeleteLine() {
 }
 
 function onFontChange(fontType = 'lato') {
+  console.log('font focus')
+
   gMeme.lines[gMeme.selectedLineIdx].font = fontType
+  console.log(fontType)
   renderMeme()
 }
