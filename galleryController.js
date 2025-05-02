@@ -35,11 +35,17 @@ function onGalleryNav() {
 function generateRandomMeme() {
   gIsRandomMeme = true
   var randomImgId = getRandomIntInclusive(0, gImgs.length - 1)
-  gMeme.selectedImgId = randomImgId
-  gMeme.lines[0].txt = 'HAHAHA'
 
-  console.log(randomImgId)
-  console.log(gIsRandomMeme)
+  var gMemePhrasesId = getRandomIntInclusive(0, gMemePhrases.length - 1)
+
+  var randomPhrase = gMemePhrases[gMemePhrasesId]
+  gMeme.selectedImgId = randomImgId
+
+  gMeme.lines[0].txt = randomPhrase
+
+  var textBox = document.querySelector('.text-input')
+  textBox.value = randomPhrase
+
   onImgSelect(randomImgId)
   hideGallery()
 }
