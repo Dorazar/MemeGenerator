@@ -17,7 +17,7 @@ function renderGallery() {
 
 
 function showGallery() {
-    gElGallery.style.display='block'
+    gElGallery.style.display = 'grid'
 
 }
 
