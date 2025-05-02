@@ -28,24 +28,22 @@
         <canvas width="300" height="300" onclick="getEvPos(event)"></canvas>
       </div>
 
-
       <div class="editor-btns">
-       <div class="input-row">
-        <input
-        class="text-input"
-        name="txt"
-        id="txt"
-        placeholder="write it!"
-        value="write it!"
-        oninput="onSetLineTxt()"
-        onfocus="onFocus()"
-        onblur="onBlur()"
-      />
-       </div>
-
-        <div 
-        class="line-editors">
+        <div class="input-row">
+          <input
+            class="text-input"
+            name="txt"
+            id="txt"
+            placeholder="write it!"
+            value="write it!"
+            oninput="onSetLineTxt()"
+            onfocus="onFocus()"
+            onblur="onBlur()"
+          />
           <input type="color" name="colorPicker" id="colorPicker" onchange="onColorPicker(this.value)" />
+        </div>
+
+        <div class="line-editors">
           <button>
             <span class="material-symbols-outlined" onclick="onAddTextLine()">add_circle</span>
           </button>
@@ -59,28 +57,34 @@
         </div>
 
         <div class="row-align-ediors">
+          <button>
+            <span class="material-symbols-outlined" onclick="onLeftAlignMent()"> keyboard_tab_rtl </span>
+          </button>
+          <button>
+            <span class="material-symbols-outlined" onclick="onRightAlignMent()">keyboard_tab</span>
+          </button>
          
-          <button class="material-symbols-outlined" onclick="onLeftAlignMent()">keyboard_tab_rtl</button>
-          <button class="material-symbols-outlined" onclick="onRightAlignMent()">keyboard_tab</button>
-          <button class="material-symbols-outlined" onclick="onTopAlignMent()">vertical_align_bottom</button>
-          <button class="material-symbols-outlined" onclick="onBottomAlignMent()">vertical_align_top</button>
+          <button>
+          <span class="material-symbols-outlined" onclick="onTopAlignMent()">vertical_align_bottom</span>
+        </button>
+          <button>
+            <span class="material-symbols-outlined" onclick="onBottomAlignMent()">vertical_align_top</span>
+          </button>
         </div>
 
         <div class="font-choose">
-          <label for="fonts" >Font:</label>
+          <label for="fonts">Font:</label>
 
-          <select id="fonts" onchange="onFontChange(this.value)" >
-            <option selected style="font-family: bangers;" value="bangers">Bangers</option>
-            <option style="font-family: lato;" value="lato">Lato</option>
-            <option style="font-family: honk;"value="honk">Honk</option>
-            <option style="font-family: pinyon;" value="pinyon">Pinyon</option>
-            <option style="font-family: fascinateinline;" value="fascinateinline">FascinateInline</option>
-            <option style="font-family: audiowide;"value="audiowide">Audiowide</option>
-           
+          <select id="fonts" onchange="onFontChange(this.value)">
+            <option selected style="font-family: bangers" value="bangers">Bangers</option>
+            <option style="font-family: lato" value="lato">Lato</option>
+            <option style="font-family: honk" value="honk">Honk</option>
+            <option style="font-family: pinyon" value="pinyon">Pinyon</option>
+            <option style="font-family: fascinateinline" value="fascinateinline">FascinateInline</option>
+            <option style="font-family: audiowide" value="audiowide">Audiowide</option>
           </select>
         </div>
-        
-       
+
         <button>
           <a class="material-symbols-outlined" href="#" onclick="onDownloadCanvas(this)">download</a>
         </button>
@@ -89,9 +93,7 @@
       <!-- <button onclick="onSwitchLine()">Switch Line</button> -->
     </section>
 
-    <section class="gallery">
-      
-    </section>
+    <section class="gallery"></section>
 
     <script src="./memeService.js"></script>
     <script src="./galleryService.js"></script>
