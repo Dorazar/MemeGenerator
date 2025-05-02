@@ -2,6 +2,8 @@
 
 @import url('/css/basics/colors.css');
 
+@import url('./css/components/hamburger.css');
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -50,6 +52,7 @@ header {
   grid-template-columns: minmax(10px, 1fr) minmax(auto, 400px) minmax(auto, 400px) minmax(10px, 1fr);
   align-items: center;
   grid-column: 1/-1;
+  box-shadow: 0px 1px var(--text-color); 
 }
 
 .logo {
@@ -210,6 +213,9 @@ label {
     justify-items: center;
 }
 
+.hamburger{
+    display: none;
+}
 
 
 @media (max-width: 450px) {
@@ -304,5 +310,68 @@ label {
 
 }
     
+
+nav{
+   
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: fixed;
+    inset: 0 0 0 auto;
+    height: 100dvh;
+    background-color: var(--second-color);
+    top: 61px;
+    width: 50dvw;
+    transform: translate(100%);
+    cursor: pointer;
+    transition: transform .8s;
+}
+nav > *{
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-content: center;
+    box-shadow: 0px 1px var(--text-color); 
+}
+
+nav > :first-child{
+    box-shadow: 0px 1px var(--text-color); 
+}
+
+
+.hamburger{
+    font-size: 2rem;
+    display: block;
+    justify-self: end;
+    cursor: pointer;
+}
+
+
+
+body.menu-open nav {
+    transform: translateX(0);
+}
+
+.main-screen {
+    background-color: rgba(0, 0, 0, 50%);
+    inset: 0;
+    position: fixed;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    transform: opacity .8s;
+}
+
+
+body.menu-open .main-screen {
+   opacity: 1;
+   pointer-events: auto;
+}
+
+
+
 
 }
