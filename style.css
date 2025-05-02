@@ -111,6 +111,9 @@ nav {
     /* height:450px; */
 }
 
+#colorPicker{
+    height: 100%;
+}
 
 .editor {
     gap: 10px;
@@ -137,12 +140,17 @@ nav {
     justify-self: center;
     width: 100%;
     height: 100%;
+    
 }
 
 .text-input{
     height: 50%;
     width: 100%;
+    border-radius:10px;
 }
+
+
+
 
 .line-editors,.row-align-ediors,.font-choose{
     display: grid;
@@ -152,3 +160,12 @@ nav {
     
 }
 
+.font-choose{
+    display: grid;
+    grid-auto-flow: column;
+    align-content: center;
+}
+
+#fonts{
+   width: 100%;
+}
