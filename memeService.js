@@ -42,7 +42,7 @@ var gMeme = {
   lines: [
     {
       txt: 'write it!',
-      size: 20,
+      size: 40,
       color: '',
       font: 'Bangers',
     },
@@ -84,7 +84,7 @@ function setFontSize(value) {
 function addTextLine() {
   const newLine = {
     txt: 'write it!',
-    size: 20,
+    size: 40,
     color: '',
     font: 'Bangers',
   }

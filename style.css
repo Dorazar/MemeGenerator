@@ -119,7 +119,7 @@ margin-top: 50px;
   background-color: var(--main-background);
   display: grid;
   width: fit-content;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(5,1fr);
   width: 100%;
 }
 
@@ -139,6 +139,11 @@ margin-top: 50px;
 }
 
 .row-align-ediors button  {
+    height: 50px;
+    width: 50px;
+}
+
+.download-and-share button {
     height: 50px;
     width: 50px;
 }
@@ -172,25 +177,34 @@ label {
 
 .line-editors,
 .row-align-ediors,
-.font-choose {
+.font-choose,
+.download-and-share {
   display: grid;
   grid-auto-flow: column;
   justify-content: space-evenly;
-  margin-left: 10px;
-  margin-right: 10px;
+
   align-content: center;
 }
 
 .font-choose {
   display: grid;
-  /* grid-auto-flow: column; */
-  /* align-content: center; */
+
 }
 
 #fonts {
 
   width: 100%;
 }
+
+
+.download-and-share {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+
 
 @media (max-width: 450px) {
   /* סגנונות עבור טלפונים ניידים */
