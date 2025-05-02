@@ -43,7 +43,7 @@ var gMeme = {
     {
       txt: 'write it!',
       size: 40,
-      color: '',
+      color: 'black',
       font: 'Bangers',
     },
   ],
@@ -85,7 +85,7 @@ function addTextLine() {
   const newLine = {
     txt: 'write it!',
     size: 40,
-    color: '',
+    color: 'black',
     font: 'Bangers',
   }
   gMeme.lines.push(newLine)
@@ -128,3 +128,29 @@ function onBottomAlignMent() {
   line.pos.y -= 10
   renderMeme()
 }
+
+//save to local storage saved mems
+
+var gSavedMemes = []
+
+var KEY = 'SAVED_MEMS'
+
+function onAddToSaveMemes() {
+  if (gSavedMemes.length > 0) {
+    gSavedMemes = loadFromLocalStorage(KEY)
+  }
+
+  gSavedMemes.push(gMeme)
+  saveToLocalStorage('SAVED_MEMS', gSavedMemes)
+}
+
+function saveToLocalStorage(key, value) {
+  const json = JSON.stringify(value)
+  localStorage.setItem(key, json)
+}
+
+function loadFromLocalStorage(key) {
+  const json = localStorage.getItem(key)
+  return JSON.parse(json)
+}
+
