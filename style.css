@@ -81,7 +81,14 @@ nav {
   width: 150px;
   height: 150px;
   object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--text-color)
 }
+
+.gallery > img {
+    border: 1px solid var(--text-color);
+}
+
 
 .gallery {
 margin-top: 50px;
@@ -91,7 +98,6 @@ margin-top: 50px;
   grid-template-columns: repeat(auto-fit, 150px);
   /* grid-template-rows: repeat(5,150px); */
   justify-content: center;
-
   align-content: start;
   /* height:450px; */
 }
