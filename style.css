@@ -72,6 +72,10 @@ nav {
   grid-column: 3/3;
 }
 
+nav > *{
+    cursor: pointer;
+}
+
 /* header > *:not(.logo){
     background-color: red;
     margin-inline-end: end;
@@ -105,10 +109,12 @@ margin-top: 50px;
   /* height:450px; */
 }
 
-/* #colorPicker {
-  height: 100%;
-} */
+.gallery > *:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 10px var(--text-color); 
+  }
 
+  
 .editor {
   margin-top: 50px;
   gap: 10px;
@@ -248,6 +254,11 @@ label {
     height: 100px;
     object-fit: cover;
   }
+
+
+ 
+
+  
 
   .gallery {
     margin-top: 50px;
