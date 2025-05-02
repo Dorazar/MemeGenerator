@@ -123,13 +123,41 @@ margin-top: 50px;
   width: 100%;
 }
 
+.editor-btns button {
+    cursor: pointer;
+    border: 1px solid;
+  border-radius: 10px;
+  border-color: var(--text-color);
+    background-color: var(--second-color);
+    
+}
+
+
+.line-editors button {
+    height: 50px;
+    width: 50px;
+}
+
+.row-align-ediors button  {
+    height: 50px;
+    width: 50px;
+}
+
+.material-symbols-outlined {
+    text-align: center;
+    color: var(--text-color) !important;              /* הצבע הרצוי */
+    -webkit-text-fill-color:var(--text-color) !important; /* לוודא תמיכה בספארי/כרומיום מובייל */
+  }
+
+
+
 label {
   color: var(--text-color);
 }
 
 .input-row {
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 4fr 1fr;
   width: 100%;
   height: 100%;
 }
@@ -148,16 +176,19 @@ label {
   display: grid;
   grid-auto-flow: column;
   justify-content: space-evenly;
+  margin-left: 10px;
+  margin-right: 10px;
   align-content: center;
 }
 
 .font-choose {
   display: grid;
-  grid-auto-flow: column;
-  align-content: center;
+  /* grid-auto-flow: column; */
+  /* align-content: center; */
 }
 
 #fonts {
+
   width: 100%;
 }
 
@@ -165,7 +196,7 @@ label {
   /* סגנונות עבור טלפונים ניידים */
 
   *{
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
 
@@ -225,16 +256,6 @@ label {
 }
 
 
-.line-editors button {
-    height: 50px;
-    width: 50px;
-}
-
-.row-align-ediors button  {
-    height: 50px;
-    width: 50px;
-}
-
 .input-row {
     width: 100%;
     
@@ -248,12 +269,20 @@ label {
     width: 40px;
 }
 
+#colorPicker{
+    justify-self: start;
+}
 
 
-button .material-symbols-outlined {
-    text-align: center;
-    color: black;
-  }
+.font-choose label{
+    font-size: 1.2rem;
+    align-self: center;
 
+}
+.font-choose #fonts{
+    font-size: 1.2rem;
+
+}
+    
 
 }
