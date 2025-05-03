@@ -1,8 +1,6 @@
-@import url('/css/fonts/fonts.css');
-
-@import url('/css/basics/colors.css');
-
-@import url('./css/components/hamburger.css');
+@import url('css/fonts/fonts.css');
+@import url('css/basics/colors.css');
+@import url('css/components/hamburger.css');
 
 * {
   margin: 0;
