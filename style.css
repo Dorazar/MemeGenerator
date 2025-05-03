@@ -278,6 +278,10 @@ label {
     display: none;
 }
 
+.fa-square-facebook {
+  font-size: 24px;
+  color: var(--text-color);
+}
 
 
 

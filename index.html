@@ -95,19 +95,18 @@
             <a class="material-symbols-outlined" href="#" onclick="onDownloadCanvas(this)">download</a>
           </button>
           <button onclick="onSaveMeme()"><span class="material-symbols-outlined"> save </span></button>
+          <form method="POST" enctype="multipart/form-data" onsubmit="onShareImg(event)">
+            <button class="fa-brands fa-square-facebook" class="btn" type="submit"></button>
+          </form>
         </div>
       </div>
     </section>
 
     <section class="gallery"></section>
 
-    <section class="saved-mems">
-
-
-    </section>
+    <section class="saved-mems"></section>
 
     <script src="./memeService.js"></script>
-  
 
     <script src="./memeController.js"></script>
     <script src="./galleryController.js"></script>
@@ -117,5 +116,3 @@
     <script src="./savedMemesController.js"></script>
   </body>
 </html>
-
-
