@@ -279,8 +279,12 @@ label {
 }
 
 
-@media (max-width: 450px) {
-  /* סגנונות עבור טלפונים ניידים */
+
+
+
+
+@media (max-width: 770px) {
+
 
   *{
     font-size: 1rem;
@@ -290,7 +294,7 @@ label {
   .main-layout {
     background-color: var(--main-background);
     display: grid;
-    grid-template-columns: minmax(10px, 1fr) minmax(370px   , 430px) minmax(10px, 1fr);
+    grid-template-columns: minmax(10px, 1fr) minmax(420px, 750px) minmax(10px, 1fr);
     grid-template-rows: 60px 1fr;
     grid-template-areas:
       '. header .'
@@ -305,8 +309,8 @@ label {
  
 
 .gallery > * {
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
     object-fit: cover;
   }
 
@@ -320,7 +324,7 @@ label {
     display: grid;
     grid-area: main-content;
     gap: 10px;
-    grid-template-columns: repeat(auto-fit, 100px);
+    grid-template-columns: repeat(auto-fit, 125px);
     /* grid-template-rows: repeat(5,150px); */
     justify-content: center;
   
