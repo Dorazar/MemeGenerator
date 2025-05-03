@@ -29,6 +29,7 @@ function hideGallery() {
 
 function onGalleryNav() {
   hideMemeGenerator()
+  hideSavedMems()
   showGallery()
 }
 
@@ -67,7 +68,7 @@ function resetGmeme() {
     lines: [
       {
         txt: 'write it!',
-        size: 20,
+        size: 40,
         color: '',
         font: 'lato',
       },

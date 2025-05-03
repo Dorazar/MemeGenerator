@@ -11,6 +11,7 @@ function onInit() {
   gCtx = gElCanvas.getContext('2d')
   gElGallery = document.querySelector('.gallery')
   gElEditor = document.querySelector('.editor')
+  hideSavedMems()
 
   renderGallery()
 }
@@ -211,9 +212,6 @@ function onFontChange(fontType = 'lato') {
   renderMeme()
 }
 
-
-
-
 const gMemePhrases = [
   'When you have that day',
   'Me vs. my emails',
@@ -227,3 +225,9 @@ const gMemePhrases = [
   'Just me being me',
 ]
 
+function onSavedMemes() {
+  hideMemeGenerator()
+  hideGallery()
+  showSavedMems()
+  renderSavedMemes()
+}

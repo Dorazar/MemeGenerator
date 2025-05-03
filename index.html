@@ -15,22 +15,18 @@
     <title>Meme generator</title>
   </head>
   <body class="main-layout" class="main-layout" onload="onInit()" onresize="onResizeCanvas()">
-    
     <div onclick="toggleMenu()" class="main-screen"></div>
-    
-    
+
     <header>
       <div class="logo">MemeGenerator</div>
 
       <nav>
         <div class="gallery-nav" onclick="onGalleryNav()">Gallery</div>
-        <div class="memes-nav">My Saved Memes</div>
+        <div class="memes-nav" onclick="onSavedMemes()">My Saved Memes</div>
         <div class="about-nav">About</div>
       </nav>
 
-     
-        <i class="fa-solid fa-bars hamburger" onclick="toggleMenu()"></i>
-    
+      <i class="fa-solid fa-bars hamburger" onclick="toggleMenu()"></i>
     </header>
     <section class="editor">
       <div class="canvas-container">
@@ -98,22 +94,28 @@
           <button>
             <a class="material-symbols-outlined" href="#" onclick="onDownloadCanvas(this)">download</a>
           </button>
-          <button><span class="material-symbols-outlined" onclick="onAddToSaveMemes()">
-            save
-            </span></button>
+          <button><span class="material-symbols-outlined" onclick="onSaveMeme()"> save </span></button>
         </div>
       </div>
-
     </section>
 
     <section class="gallery"></section>
 
+    <section class="saved-mems">
+
+
+    </section>
+
     <script src="./memeService.js"></script>
-    <script src="./galleryService.js"></script>
+  
 
     <script src="./memeController.js"></script>
     <script src="./galleryController.js"></script>
 
-    <script src="/hamburger.js"></script>
+    <script src="./hamburger.js"></script>
+
+    <script src="./savedMemesController.js"></script>
   </body>
 </html>
+
+

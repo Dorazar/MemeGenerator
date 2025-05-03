@@ -131,18 +131,47 @@ function onBottomAlignMent() {
 
 //save to local storage saved mems
 
-var gSavedMemes = []
+//fix
 
-var KEY = 'SAVED_MEMS'
+var gSavedMemes
 
-function onAddToSaveMemes() {
-  if (gSavedMemes.length > 0) {
-    gSavedMemes = loadFromLocalStorage(KEY)
+
+
+var KEY = 'savedMems'
+
+function getSavedMems() {
+  gSavedMemes = loadFromLocalStorage(KEY)
+  if (gSavedMemes && gSavedMemes.length > 0) {
+    return gSavedMemes
+  } else {
+    gSavedMemes = []
+   
+    return gSavedMemes
   }
-
-  gSavedMemes.push(gMeme)
-  saveToLocalStorage('SAVED_MEMS', gSavedMemes)
 }
+
+
+// check if you have the same text and pic twice, if true, return
+
+
+function searchForDoubleMemes() {
+ return gSavedMemes.find
+ (meme => meme.selectedImgId === gMeme.selectedImgId && meme.lines.txt ===gMeme.lines.txt)
+}
+
+
+function onSaveMeme() {
+  gSavedMemes=getSavedMems()
+  var double = searchForDoubleMemes()
+  if (double) return
+  gSavedMemes.push(gMeme)
+  console.log(gSavedMemes)
+  saveToLocalStorage(KEY, gSavedMemes)
+
+}
+
+
+
 
 function saveToLocalStorage(key, value) {
   const json = JSON.stringify(value)
