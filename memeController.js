@@ -212,22 +212,3 @@ function onFontChange(fontType = 'lato') {
   renderMeme()
 }
 
-const gMemePhrases = [
-  'When you have that day',
-  'Me vs. my emails',
-  'Life before and after coffee',
-  'Nothing beats the weekend',
-  'Monday starts again',
-  'Found a free half-hour',
-  'Once in a lifetime',
-  'Nothing like good music',
-  'A day without hugs',
-  'Just me being me',
-]
-
-function onSavedMemes() {
-  hideMemeGenerator()
-  hideGallery()
-  showSavedMems()
-  renderSavedMemes()
-}
