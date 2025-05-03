@@ -1,16 +1,11 @@
 'use strict'
 
 function renderGallery() {
-  const elGalleryContainer = document.querySelector('.gallery')
-  elGalleryContainer.innerHTML = gImgs
-    .map((img) => `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`)
-    .join('')
-  addBtnGallry()
-}
+  const galleryRender = gImgs.map((img) => `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`).join('')
 
-function addBtnGallry() {
   const elGalleryContainer = document.querySelector('.gallery')
-  elGalleryContainer.innerHTML += `<button onclick="generateRandomMeme()">I'm flexible</button>`
+  elGalleryContainer.innerHTML = `<button onclick="generateRandomMeme()">I'm flexible</button>`
+  elGalleryContainer.innerHTML += galleryRender
 }
 
 function showGallery() {
