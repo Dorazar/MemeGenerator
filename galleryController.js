@@ -78,15 +78,14 @@ function onShareImg(ev) {
   ev.preventDefault()
   const canvasData = gElCanvas.toDataURL('image/jpeg')
 
-  const shareWindow = window.open('', '_blank') // נפתח מיד
+  // נפתח חלון מיד – זה חשוב למובייל
+  const shareWindow = window.open('about:blank', '_blank')
 
-  function onSuccess(uploadedImgUrl) {
+  uploadImg(canvasData, (uploadedImgUrl) => {
     const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
-    shareWindow.location.href = shareUrl // מעדכנים את הלינק כשמוכן
-  }
-
-  uploadImg(canvasData, onSuccess)
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}`
+    shareWindow.location.href = shareUrl
+  })
 }
 
 // on submit call to this function
