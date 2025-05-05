@@ -78,16 +78,16 @@ function onShareImg(ev) {
   ev.preventDefault()
   const canvasData = gElCanvas.toDataURL('image/jpeg')
 
-  // After a succesful upload, allow the user to share on Facebook
-  function onSuccess(uploadedImgUrl) {
-      const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-      console.log('encodedUploadedImgUrl:', encodedUploadedImgUrl)
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
+  const shareWindow = window.open('', '_blank') // נפתח מיד
 
+  function onSuccess(uploadedImgUrl) {
+    const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
+    shareWindow.location.href = shareUrl // מעדכנים את הלינק כשמוכן
   }
+
   uploadImg(canvasData, onSuccess)
 }
-
 
 // on submit call to this function
 
