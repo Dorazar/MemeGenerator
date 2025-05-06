@@ -72,7 +72,7 @@ nav {
   height: 100%;
   align-items: center;
   grid-column: 3/3;
-  
+  z-index: 999;
 }
 
 nav > *{
@@ -176,8 +176,7 @@ background-color: var(--second-color);
 .saved-mems .saved-meme-card:hover {
   
   box-shadow: 2px 2px 10px var(--text-color);
-  animation: bounce; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s; /* don't forget to set a duration! */
+  
 }
 
 
@@ -245,7 +244,7 @@ background-color: var(--second-color);
     width: 50px;
 }
 
-.material-symbols-outlined {
+.material-symbols-outlined:not(.upload-icon) {
     text-align: center;
     color: var(--text-color) !important;            
     -webkit-text-fill-color:var(--text-color) !important; 
@@ -322,12 +321,32 @@ label {
 
 .download-and-share  button:hover {
   
-  animation: pulse; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 0.5s; /* don't forget to set a duration! */
+  animation: pulse; 
+  animation-duration: 0.5s; 
 }
 
+.upload-btn{
+  display: grid;
+  background-color: var(--text-color);
+}
 
+.upload-btn .upload-icon {
+  align-self: center;
+  justify-self: center;
+}
 
+.material-symbols-outlined{
+  
+  color: var(--second-color);
+  font-size: 2rem;
+  
+}
+
+.im-flexible{
+  font-size: 1.5rem;
+  color: var(--second-color);
+  background-color: var(--text-color);
+}
 
 
 

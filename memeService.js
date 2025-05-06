@@ -154,7 +154,7 @@ function getImgs() {
 }
 
 function onFilterInput(value) {
-  console.log(value)
+  // console.log(value)
 
   value = value.toLowerCase().trim()
 
@@ -245,4 +245,43 @@ function onBottomAlignMent() {
   const line = gMeme.lines[gMeme.selectedLineIdx]
   line.pos.y -= 10
   renderMeme()
+}
+
+function onImgUpload(ev) {
+  const file = ev.target.files[0]
+  if (!file) return
+
+  const reader = new FileReader()
+
+  reader.onload = function (event) {
+    const imgDataUrl = event.target.result // זה Base64 Data URL
+
+    const newImg = {
+      id: makeId(),
+      url: imgDataUrl,
+      keywords: [],
+    }
+
+    gImgs.push(newImg)
+    saveImgToLocal()
+    renderGallery()
+  }
+
+  reader.readAsDataURL(file) // 🚀 המרה ל־base64
+}
+
+var gSavedGallery = []
+
+function loadImgsFromLocal() {
+  gSavedGallery = loadFromLocalStorage('savedGallery')
+
+  if (!gSavedGallery) {
+    saveToLocalStorage('savedGallery', gImgs)
+  }
+
+  gImgs = gSavedGallery
+}
+
+function saveImgToLocal() {
+  saveToLocalStorage('savedGallery', gImgs)
 }

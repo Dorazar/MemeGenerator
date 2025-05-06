@@ -7,6 +7,7 @@ var gCtx
 var gElGallery
 var gElEditor
 function onInit() {
+  loadImgsFromLocal()
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
   gElGallery = document.querySelector('.gallery')

@@ -57,6 +57,7 @@ function hideSavedMems() {
 function showSavedMems() {
   const elSavedMems = document.querySelector('.saved-mems')
   elSavedMems.style.display = 'grid'
+  toggleMenu()
 }
 
 const gMemePhrases = [

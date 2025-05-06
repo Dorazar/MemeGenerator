@@ -2,10 +2,23 @@
 
 function renderGallery() {
   const imgs = getImgs()
-  const galleryRender = imgs.map((img) => `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`).join('')
+  const galleryRender = imgs
+    .map(
+      (img) => `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">
+      
+      
+  `
+    )
+    .join('')
 
   const elGalleryContainer = document.querySelector('.gallery')
-  elGalleryContainer.innerHTML = `<button onclick="generateRandomMeme()">I'm flexible</button>`
+  elGalleryContainer.innerHTML = `
+  <label class="upload-btn">
+    <span class="material-symbols-outlined upload-icon">upload</span>
+    <input type="file" accept="image/*" hidden onchange="onImgUpload(event)">
+  </label>
+  <button class="im-flexible" onclick="generateRandomMeme()">I'm flexible</button>
+`
   elGalleryContainer.innerHTML += galleryRender
 }
 
@@ -16,6 +29,7 @@ function showGallery() {
   resetGmeme()
   let text = document.querySelector('.text-input')
   text.value = gMeme.lines[gMeme.selectedLineIdx].txt
+  toggleMenu()
 }
 
 function hideGallery() {
