@@ -42,7 +42,7 @@ var gImgs = [
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/9.jpg',
-    keywords: ['luaght'],
+    keywords: ['luaght', 'kid'],
   },
   {
     id: makeId(),
@@ -62,72 +62,72 @@ var gImgs = [
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/drevil.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['victory', 'me'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/img2.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['dance', 'child'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/img4.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['trum', 'yes'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/img5.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['baby', 'look'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/img6.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['dog', 'lay'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/img11.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['obamba', 'yes', 'laugth'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/img12.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['kiss'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/leo.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['wine', 'cheers'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/meme1.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['sunglasses', 'matrix'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/One-Does-Not-Simply.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['hair', 'see'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/Oprah-You-Get-A.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['opra', 'red'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/patrick.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['yes', 'you'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/putin.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['putin', 'tie'],
   },
   {
     id: makeId(),
     url: 'meme-imgs/meme-imgs (various aspect ratios)/X-Everywhere.jpg',
-    keywords: ['haim', 'you'],
+    keywords: ['toy', 'story'],
   },
 ]
 
@@ -142,6 +142,29 @@ var gMeme = {
       font: 'Bangers',
     },
   ],
+}
+
+var gFilterImgs = []
+
+function getImgs() {
+  if (gFilterImgs.length > 0) {
+    return gFilterImgs
+  }
+  return gImgs
+}
+
+function onFilterInput(value) {
+  console.log(value)
+
+  value = value.toLowerCase().trim()
+
+  gFilterImgs = gImgs.filter((img) => img.keywords.some((keyword) => keyword.toLowerCase().includes(value)))
+
+  console.log('gFilterImgs:', gFilterImgs)
+  if (gFilterImgs.length === 0) {
+    gFilterImgs = []
+  }
+  renderGallery()
 }
 
 function getMeme() {
@@ -223,5 +246,3 @@ function onBottomAlignMent() {
   line.pos.y -= 10
   renderMeme()
 }
-
-

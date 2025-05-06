@@ -1,7 +1,8 @@
 'use strict'
 
 function renderGallery() {
-  const galleryRender = gImgs.map((img) => `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`).join('')
+  const imgs = getImgs()
+  const galleryRender = imgs.map((img) => `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`).join('')
 
   const elGalleryContainer = document.querySelector('.gallery')
   elGalleryContainer.innerHTML = `<button onclick="generateRandomMeme()">I'm flexible</button>`
@@ -9,6 +10,7 @@ function renderGallery() {
 }
 
 function showGallery() {
+  document.querySelector('.gallery-container').style.display = 'grid'
   gElGallery.style.display = 'grid'
 
   resetGmeme()
@@ -18,7 +20,7 @@ function showGallery() {
 
 function hideGallery() {
   gElGallery.style.display = 'none'
-
+  document.querySelector('.gallery-container').style.display = 'none'
   renderMeme()
 }
 
@@ -71,14 +73,11 @@ function resetGmeme() {
   }
 }
 
-
 // share on facebook
 
 function onShareImg(ev) {
   ev.preventDefault()
   const canvasData = gElCanvas.toDataURL('image/jpeg')
-
-  // נפתח חלון מיד – זה חשוב למובייל
   const shareWindow = window.open('about:blank', '_blank')
 
   uploadImg(canvasData, (uploadedImgUrl) => {
@@ -97,17 +96,14 @@ async function uploadImg(imgData, onSuccess) {
   formData.append('file', imgData)
   formData.append('upload_preset', 'webify')
   try {
-      const res = await fetch(UPLOAD_URL, {
-          method: 'POST',
-          body: formData
-      })
-      const data = await res.json()
-      console.log('Cloudinary response:', data)
-      onSuccess(data.secure_url)
-
+    const res = await fetch(UPLOAD_URL, {
+      method: 'POST',
+      body: formData,
+    })
+    const data = await res.json()
+    console.log('Cloudinary response:', data)
+    onSuccess(data.secure_url)
   } catch (err) {
-      console.log(err)
+    console.log(err)
   }
 }
-
-
