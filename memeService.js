@@ -254,8 +254,7 @@ function onImgUpload(ev) {
   const reader = new FileReader()
 
   reader.onload = function (event) {
-    const imgDataUrl = event.target.result // זה Base64 Data URL
-
+    const imgDataUrl = event.target.result
     const newImg = {
       id: makeId(),
       url: imgDataUrl,
@@ -267,7 +266,7 @@ function onImgUpload(ev) {
     renderGallery()
   }
 
-  reader.readAsDataURL(file) // 🚀 המרה ל־base64
+  reader.readAsDataURL(file) 
 }
 
 var gSavedGallery = []
