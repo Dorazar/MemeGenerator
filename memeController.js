@@ -38,7 +38,9 @@ function onDrawImg(imgSource) {
   img.onload = () => {
     gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    onWriteOnCanvas()
+    document.fonts.ready.then(() => {
+      onWriteOnCanvas()
+    })
   }
 }
 
@@ -49,6 +51,7 @@ function onDrawImg(imgSource) {
 function onWriteOnCanvas() {
   const lineSpacing = 10
   gMeme.lines.forEach((line, idx) => {
+    console.log(line.font)
     gCtx.font = `${line.size}px ${line.font}`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
