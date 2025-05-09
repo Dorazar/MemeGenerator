@@ -5,6 +5,19 @@ var KEY = 'savedMems'
 var savedMeme = null
 var loadMode = false
 
+const gMemePhrases = [
+  'When you have that day',
+  'Me vs. my emails',
+  'Life before and after coffee',
+  'Nothing beats the weekend',
+  'Monday starts again',
+  'Found a free half-hour',
+  'Once in a lifetime',
+  'Nothing like good music',
+  'A day without hugs',
+  'Just me being me',
+]
+
 function renderSavedMemes() {
   document.querySelector('.saved-mems').innerHTML = gSavedMemes
     .map((meme, idx) => {
@@ -39,6 +52,8 @@ function onSaveMeme(elLink) {
   }
 }
 
+//create
+
 function createSaveMeme() {
   const meme = structuredClone(getMeme())
   meme.id = makeSavedId()
@@ -50,6 +65,8 @@ function createSaveMeme() {
   console.log('saveSucessful:', meme)
 }
 
+//update
+
 function updateSaveMeme() {
   console.log(savedMeme)
   const elInput = document.querySelector('.text-input')
@@ -60,7 +77,7 @@ function updateSaveMeme() {
   loadMode = false
 }
 
-// loads
+// load
 
 function loadMeme(memeId) {
   loadMode = true
@@ -68,7 +85,7 @@ function loadMeme(memeId) {
 
   if (!savedMeme) return console.warn('Meme not found')
 
-  gMeme = structuredClone(savedMeme) // 💥 כאן חשוב
+  gMeme = structuredClone(savedMeme)
 
   const elInput = document.querySelector('.text-input')
   elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
@@ -105,19 +122,6 @@ function showSavedMems() {
   toggleMenu()
 }
 
-const gMemePhrases = [
-  'When you have that day',
-  'Me vs. my emails',
-  'Life before and after coffee',
-  'Nothing beats the weekend',
-  'Monday starts again',
-  'Found a free half-hour',
-  'Once in a lifetime',
-  'Nothing like good music',
-  'A day without hugs',
-  'Just me being me',
-]
-
 function onSavedMemes() {
   hideMemeGenerator()
   hideGallery()
@@ -125,29 +129,10 @@ function onSavedMemes() {
   renderSavedMemes()
 }
 
-//save to local storage saved mems
 
-function saveToLocalStorage(key, value) {
-  const json = JSON.stringify(value)
-  localStorage.setItem(key, json)
-}
-
-function loadFromLocalStorage(key) {
-  const json = localStorage.getItem(key)
-  return JSON.parse(json)
-}
 
 function findSavedMeme(id) {
   const memes = getSavedMems()
   return memes.find((meme) => meme.id === id)
 }
 
-function makeSavedId() {
-  var result = ''
-  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  var charactersLength = 5
-  for (var i = 0; i < 5; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength))
-  }
-  return result
-}

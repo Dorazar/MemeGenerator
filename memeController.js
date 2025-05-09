@@ -29,10 +29,10 @@ function onResizeCanvas() {
   const elContainer = document.querySelector('.canvas-container')
   gElCanvas.width = elContainer.clientWidth
   gMeme.lines.forEach((line) => (line.pos = null))
-  renderMeme()
+  document.fonts.ready.then(() => {
+    renderMeme()
+  })
 }
-
-// onDrawImg()
 
 function onDrawImg(imgSource) {
   const img = new Image()
@@ -45,10 +45,6 @@ function onDrawImg(imgSource) {
     })
   }
 }
-
-// add write on canvas to onchange
-
-// onWriteOnCanvas()
 
 function onWriteOnCanvas() {
   const lineSpacing = 10
@@ -108,7 +104,7 @@ function getEvPos(ev) {
       y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
     }
   }
-  console.log(pos)
+  // console.log(pos)
   lineClicked(pos)
   return pos
 }
@@ -121,17 +117,20 @@ function lineClicked(pos) {
       (line.pos.xStart <= pos.x) & (line.pos.xEnd >= pos.x) & (line.pos.yStart <= pos.y) & (line.pos.yEnd >= pos.y)
   )
   if (!line) return
-  console.log(line)
+  // console.log(line)
 
   const lineIdx = findLineIdx(line)
   gMeme.selectedLineIdx = lineIdx
   editLine(lineIdx)
+  return true
 }
 
 function onSetLineTxt() {
   setLineTxt()
   gIsEditMode = true
-  renderMeme()
+  document.fonts.ready.then(() => {
+    renderMeme()
+  })
 }
 
 function hideMemeGenerator() {
@@ -153,7 +152,9 @@ function onImgSelect(imgId) {
     resetTextLine()
   }
   gIsRandomMeme = false
-  renderMeme()
+  document.fonts.ready.then(() => {
+    renderMeme()
+  })
 }
 
 function onDownloadCanvas(elLink) {
@@ -180,16 +181,66 @@ function onAddTextLine() {
   gIsEditMode = true
   let text = document.querySelector('.text-input')
   text.value = gMeme.lines[gMeme.selectedLineIdx].txt
-  renderMeme()
+  document.fonts.ready.then(() => {
+    renderMeme()
+  })
 }
 
 function onSwitchLine() {
   switchLine()
 }
 
+function onLeftAlignMent() {
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.pos.x -= 10
+  renderMeme()
+}
+
+function onRightAlignMent() {
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.pos.x += 10
+  renderMeme()
+}
+
+function onTopAlignMent() {
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.pos.y += 10
+  renderMeme()
+}
+
+function onBottomAlignMent() {
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.pos.y -= 10
+  renderMeme()
+}
+
+function onImgUpload(ev) {
+  const file = ev.target.files[0]
+  if (!file) return
+
+  const reader = new FileReader()
+
+  reader.onload = function (event) {
+    const imgDataUrl = event.target.result
+    const newImg = {
+      id: makeId(),
+      url: imgDataUrl,
+      keywords: [],
+    }
+
+    gImgs.push(newImg)
+    saveImgToLocal()
+    renderGallery()
+  }
+
+  reader.readAsDataURL(file)
+}
+
 function editLine(lineIdx) {
   gIsEditMode = true
-  renderMeme()
+  document.fonts.ready.then(() => {
+    renderMeme()
+  })
   let text = document.querySelector('.text-input')
   text.value = gMeme.lines[lineIdx].txt
 }
@@ -214,6 +265,50 @@ function onFontChange(fontType = 'lato') {
 
   gMeme.lines[gMeme.selectedLineIdx].font = fontType
   console.log(fontType)
+  document.fonts.ready.then(() => {
+    renderMeme()
+  })
+}
+
+//drag & drop
+
+var gStartPos
+
+function onDown(ev) {
+  ev.preventDefault()
+  console.log('onDown')
+
+  const pos = getEvPos(ev)
+
+  if (!lineClicked(pos)) return
+
+  gMeme.isDrag = true
+  gStartPos = pos
+  document.body.style.cursor = 'grabbing'
+}
+
+function onUp() {
+  document.body.style.cursor = 'default'
+  gMeme.isDrag = false
+}
+
+function onMove(ev) {
+  ev.preventDefault()
+  const { isDrag } = getMeme()
+  if (!isDrag) return
+
+  const pos = getEvPos(ev)
+  gIsEditMode = true
+  const dx = pos.x - gMeme.lines[gMeme.selectedLineIdx].pos.x
+  const dy = pos.y - gMeme.lines[gMeme.selectedLineIdx].pos.y
+
+  gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+
+  gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+
   renderMeme()
 }
 
+function ondble() {
+  return
+}

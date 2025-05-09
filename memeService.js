@@ -1,7 +1,7 @@
 'use strict'
 
 var gId = -1
-
+var gSavedGallery = []
 var gImgs = [
   {
     id: makeId(),
@@ -134,6 +134,7 @@ var gImgs = [
 var gMeme = {
   selectedImgId: 1,
   selectedLineIdx: 0,
+  isDrag: false,
   lines: [
     {
       txt: 'write it!',
@@ -223,53 +224,8 @@ function makeId() {
   return (gId += 1)
 }
 
-function onLeftAlignMent() {
-  const line = gMeme.lines[gMeme.selectedLineIdx]
-  line.pos.x -= 10
-  renderMeme()
-}
 
-function onRightAlignMent() {
-  const line = gMeme.lines[gMeme.selectedLineIdx]
-  line.pos.x += 10
-  renderMeme()
-}
 
-function onTopAlignMent() {
-  const line = gMeme.lines[gMeme.selectedLineIdx]
-  line.pos.y += 10
-  renderMeme()
-}
-
-function onBottomAlignMent() {
-  const line = gMeme.lines[gMeme.selectedLineIdx]
-  line.pos.y -= 10
-  renderMeme()
-}
-
-function onImgUpload(ev) {
-  const file = ev.target.files[0]
-  if (!file) return
-
-  const reader = new FileReader()
-
-  reader.onload = function (event) {
-    const imgDataUrl = event.target.result
-    const newImg = {
-      id: makeId(),
-      url: imgDataUrl,
-      keywords: [],
-    }
-
-    gImgs.push(newImg)
-    saveImgToLocal()
-    renderGallery()
-  }
-
-  reader.readAsDataURL(file) 
-}
-
-var gSavedGallery = []
 
 function loadImgsFromLocal() {
   gSavedGallery = loadFromLocalStorage('savedGallery')

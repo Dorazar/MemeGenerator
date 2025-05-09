@@ -35,7 +35,9 @@ function showGallery() {
 function hideGallery() {
   gElGallery.style.display = 'none'
   document.querySelector('.gallery-container').style.display = 'none'
-  renderMeme()
+  document.fonts.ready.then(() => {
+    renderMeme()
+  })
 }
 
 function onGalleryNav() {
@@ -62,12 +64,6 @@ function generateRandomMeme() {
   hideGallery()
 }
 
-function getRandomIntInclusive(min, max) {
-  const minCeiled = Math.ceil(min)
-  const maxFloored = Math.floor(max)
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled) // The maximum is inclusive and the minimum is inclusive
-}
-
 function resetTextLine() {
   gMeme.lines[0].txt = 'write it!'
 }
@@ -76,6 +72,7 @@ function resetGmeme() {
   gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
+    isDrag: false,
     lines: [
       {
         txt: 'write it!',
