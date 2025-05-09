@@ -7,6 +7,7 @@ var gCtx
 var gElGallery
 var gElEditor
 function onInit() {
+  renderGallery()
   getSavedMems()
   loadImgsFromLocal()
   gElCanvas = document.querySelector('canvas')
@@ -14,8 +15,6 @@ function onInit() {
   gElGallery = document.querySelector('.gallery')
   gElEditor = document.querySelector('.editor')
   hideSavedMems()
-
-  renderGallery()
   gSavedMemes = getSavedMems()
 }
 
