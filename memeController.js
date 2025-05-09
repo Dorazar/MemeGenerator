@@ -279,7 +279,10 @@ function onDown(ev) {
 
   const pos = getEvPos(ev)
 
-  if (!lineClicked(pos)) return
+  if (!lineClicked(pos)) {
+    onBlur()
+    return
+  } 
 
   gMeme.isDrag = true
   gStartPos = pos
