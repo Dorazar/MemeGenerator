@@ -7,6 +7,7 @@ var gCtx
 var gElGallery
 var gElEditor
 function onInit() {
+  getSavedMems()
   loadImgsFromLocal()
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
@@ -15,6 +16,7 @@ function onInit() {
   hideSavedMems()
 
   renderGallery()
+  gSavedMemes = getSavedMems()
 }
 
 function renderMeme() {
@@ -51,7 +53,7 @@ function onDrawImg(imgSource) {
 function onWriteOnCanvas() {
   const lineSpacing = 10
   gMeme.lines.forEach((line, idx) => {
-    console.log(line.font)
+    // console.log(line.font)
     gCtx.font = `${line.size}px ${line.font}`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
@@ -141,6 +143,7 @@ function showMemeGenerator() {
 }
 
 function onImgSelect(imgId) {
+  hideSavedMems()
   hideGallery()
   showMemeGenerator()
   setImg(imgId)
@@ -192,13 +195,11 @@ function editLine(lineIdx) {
 }
 
 function onBlur() {
-  console.log('blur')
   gIsEditMode = false
   renderMeme()
 }
 
 function onFocus() {
-  console.log('focus')
   gIsEditMode = true
   onWriteOnCanvas()
 }

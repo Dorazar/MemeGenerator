@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+  
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link
@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
+    <link rel="stylesheet" href="style.css" />
     <title>Meme generator</title>
   </head>
   <body class="main-layout" class="main-layout" onload="onInit()" onresize="onResizeCanvas()">
@@ -96,7 +96,7 @@
           <button>
             <a class="material-symbols-outlined" href="#" onclick="onDownloadCanvas(this)">download</a>
           </button>
-          <button onclick="onSaveMeme()"><span class="material-symbols-outlined"> save </span></button>
+          <button onclick="onSaveMeme(event,this)"><span class="material-symbols-outlined"> save </span></button>
           <form method="POST" enctype="multipart/form-data" onsubmit="onShareImg(event)">
             <button class="fa-brands fa-square-facebook" class="btn" type="submit"></button>
           </form>

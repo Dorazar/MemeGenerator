@@ -1,18 +1,17 @@
 'use strict'
 
-var gSavedMemes
-
+var gSavedMemes = getSavedMems()
 var KEY = 'savedMems'
+var savedMeme = null
+var loadMode = false
 
 function renderSavedMemes() {
-  const memes = getSavedMems()
-
-  document.querySelector('.saved-mems').innerHTML = memes
+  document.querySelector('.saved-mems').innerHTML = gSavedMemes
     .map((meme, idx) => {
       const url = findImgSelectedByMemeId(meme.selectedImgId).url
       return `
             <div class=saved-meme-card>
-            <img src="${url}" onclick="loadMeme(${idx})"/>
+            <img src="${meme.savedImg}" onclick="loadMeme('${meme.id}')"/>
             <button class="material-symbols-outlined" onclick="onDeleteSavedMeme(${idx})">delete</button>
             </div>
         `
@@ -20,23 +19,69 @@ function renderSavedMemes() {
     .join('')
 }
 
-// load
+function getSavedMems() {
+  gSavedMemes = loadFromLocalStorage(KEY)
+  if (gSavedMemes && gSavedMemes.length > 0) {
+    return gSavedMemes
+  } else {
+    gSavedMemes = []
+    return gSavedMemes
+  }
+}
 
-function loadMeme(idx) {
-  const memes = getSavedMems()
-  const savedMeme = memes[idx]
+function onSaveMeme(elLink) {
+  if (loadMode) {
+    console.log('updated!')
+    updateSaveMeme()
+  } else if (!loadMode) {
+    console.log('created!')
+    createSaveMeme(elLink)
+  }
+}
 
-  gMeme = structuredClone(savedMeme)
+function createSaveMeme() {
+  const meme = structuredClone(getMeme())
+  meme.id = makeSavedId()
+  const dataUrl = gElCanvas.toDataURL()
+  meme.savedImg = dataUrl
+  gSavedMemes.push(meme)
+  savedMeme = meme
+  saveToLocalStorage(KEY, gSavedMemes)
+  console.log('saveSucessful:', meme)
+}
+
+function updateSaveMeme() {
+  console.log(savedMeme)
+  const elInput = document.querySelector('.text-input')
+  savedMeme.lines[savedMeme.selectedLineIdx].txt = elInput.value
+  console.log('elInput.value:', elInput.value)
+  console.log('look here:', savedMeme)
+  saveToLocalStorage(KEY, gSavedMemes)
+  loadMode = false
+}
+
+// loads
+
+function loadMeme(memeId) {
+  loadMode = true
+  savedMeme = findSavedMeme(memeId)
+
+  if (!savedMeme) return console.warn('Meme not found')
+
+  gMeme = structuredClone(savedMeme) // 💥 כאן חשוב
 
   const elInput = document.querySelector('.text-input')
   elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
 
   setImg(gMeme.selectedImgId)
-  renderMeme()
+
+  document.fonts.ready.then(() => {
+    renderMeme()
+  })
+
   hideSavedMems()
   hideGallery()
   showMemeGenerator()
-  onWriteOnCanvas()
   onResizeCanvas()
 }
 
@@ -82,36 +127,6 @@ function onSavedMemes() {
 
 //save to local storage saved mems
 
-function getSavedMems() {
-  gSavedMemes = loadFromLocalStorage(KEY)
-  if (gSavedMemes && gSavedMemes.length > 0) {
-    return gSavedMemes
-  } else {
-    gSavedMemes = []
-
-    return gSavedMemes
-  }
-}
-
-// check if you have the same text and pic twice, if true, return
-
-function searchForDoubleMemes() {
-  return gSavedMemes.find((meme) => (meme.selectedImgId === gMeme.selectedImgId) & (meme.lines.txt === gMeme.lines.txt))
-}
-
-function onSaveMeme() {
-  const text = document.querySelector('.text-input').value
-  gMeme.lines[gMeme.selectedLineIdx].txt = text
-
-  onWriteOnCanvas()
-
-  const memeCopy = structuredClone(gMeme)
-
-  const savedMemes = getSavedMems()
-  savedMemes.push(memeCopy)
-  saveToLocalStorage(KEY, savedMemes)
-}
-
 function saveToLocalStorage(key, value) {
   const json = JSON.stringify(value)
   localStorage.setItem(key, json)
@@ -120,4 +135,19 @@ function saveToLocalStorage(key, value) {
 function loadFromLocalStorage(key) {
   const json = localStorage.getItem(key)
   return JSON.parse(json)
+}
+
+function findSavedMeme(id) {
+  const memes = getSavedMems()
+  return memes.find((meme) => meme.id === id)
+}
+
+function makeSavedId() {
+  var result = ''
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  var charactersLength = 5
+  for (var i = 0; i < 5; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+  }
+  return result
 }
