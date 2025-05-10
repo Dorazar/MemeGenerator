@@ -259,7 +259,7 @@ function onDeleteLine() {
   renderMeme()
 }
 
-function onFontChange(fontType = 'lato') {
+function onFontChange(fontType = 'bangers') {
   console.log('font focus')
 
   gMeme.lines[gMeme.selectedLineIdx].font = fontType

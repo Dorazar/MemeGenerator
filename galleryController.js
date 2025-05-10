@@ -78,7 +78,7 @@ function resetGmeme() {
         txt: 'write it!',
         size: 40,
         color: '',
-        font: 'lato',
+        font: 'bangers',
       },
     ],
   }
