@@ -60,6 +60,8 @@ A fun and fully-functional meme generator built using vanilla JavaScript, HTML, 
 
 ## 🖼️ Preview
 
+![Screenshot of Meme Generator](./preview.png)
+
 To embed this README as an About page in your project:
 
 1. Create a new file named `about.html`
