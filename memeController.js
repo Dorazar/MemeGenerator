@@ -7,9 +7,9 @@ var gCtx
 var gElGallery
 var gElEditor
 function onInit() {
+  loadImgsFromLocal()
   renderGallery()
   getSavedMems()
-  loadImgsFromLocal()
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
   gElGallery = document.querySelector('.gallery')
@@ -227,7 +227,7 @@ function onImgUpload(ev) {
       keywords: [],
     }
 
-    gImgs.push(newImg)
+    gImgs.unshift(newImg)
     saveImgToLocal()
     renderGallery()
   }
@@ -275,14 +275,14 @@ var gStartPos
 
 function onDown(ev) {
   ev.preventDefault()
-  console.log('onDown')
+  // console.log('onDown')
 
   const pos = getEvPos(ev)
 
   if (!lineClicked(pos)) {
     onBlur()
     return
-  } 
+  }
 
   gMeme.isDrag = true
   gStartPos = pos

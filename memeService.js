@@ -151,7 +151,19 @@ function getImgs() {
   if (gFilterImgs.length > 0) {
     return gFilterImgs
   }
+
   return gImgs
+}
+
+function loadImgsFromLocal() {
+  gSavedGallery = loadFromLocalStorage('savedGallery')
+
+  if (!gSavedGallery) {
+    saveToLocalStorage('savedGallery', gImgs)
+    gSavedGallery = gImgs
+  }
+
+  gImgs = gSavedGallery
 }
 
 function onFilterInput(value) {
@@ -227,15 +239,7 @@ function makeId() {
 
 
 
-function loadImgsFromLocal() {
-  gSavedGallery = loadFromLocalStorage('savedGallery')
 
-  if (!gSavedGallery) {
-    saveToLocalStorage('savedGallery', gImgs)
-  }
-
-  gImgs = gSavedGallery
-}
 
 function saveImgToLocal() {
   saveToLocalStorage('savedGallery', gImgs)

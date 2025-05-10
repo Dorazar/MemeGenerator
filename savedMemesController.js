@@ -57,24 +57,38 @@ function onSaveMeme(elLink) {
 
 function createSaveMeme() {
   const meme = structuredClone(getMeme())
+
   meme.id = makeSavedId()
-  const dataUrl = gElCanvas.toDataURL()
-  meme.savedImg = dataUrl
-  gSavedMemes.push(meme)
-  savedMeme = meme
+  while (gSavedMemes.some((m) => m.id === meme.id)) {
+    meme.id = makeSavedId()
+  }
+  meme.savedImg = gElCanvas.toDataURL()
+
+  gSavedMemes.unshift(meme)
+
+  savedMeme = structuredClone(meme)
+
   saveToLocalStorage(KEY, gSavedMemes)
-  console.log('saveSucessful:', meme)
+  console.log('Saved new meme:', meme)
 }
 
 //update
 
 function updateSaveMeme() {
-  console.log(savedMeme)
-  const elInput = document.querySelector('.text-input')
-  savedMeme.lines[savedMeme.selectedLineIdx].txt = elInput.value
-  console.log('elInput.value:', elInput.value)
-  console.log('look here:', savedMeme)
+  if (!savedMeme) return console.warn('No meme loaded for update')
+
+  const idx = gSavedMemes.findIndex((meme) => meme.id === savedMeme.id)
+  if (idx === -1) return console.warn('Saved meme not found in array')
+
+  const updatedMeme = structuredClone(getMeme())
+  updatedMeme.id = savedMeme.id
+  updatedMeme.savedImg = gElCanvas.toDataURL()
+
+  gSavedMemes[idx] = updatedMeme
+  savedMeme = structuredClone(updatedMeme)
+
   saveToLocalStorage(KEY, gSavedMemes)
+  console.log('Updated meme:', updatedMeme)
   loadMode = false
 }
 
