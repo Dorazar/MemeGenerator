@@ -50,6 +50,7 @@ function onSaveMeme(elLink) {
     console.log('created!')
     createSaveMeme(elLink)
   }
+  showSaveMessage()
 }
 
 //create
@@ -129,7 +130,13 @@ function onSavedMemes() {
   renderSavedMemes()
 }
 
-
+function showSaveMessage() {
+  const elMessage = document.querySelector('.save-message')
+  elMessage.classList.add('show')
+  setTimeout(() => {
+    elMessage.classList.remove('show')
+  }, 2000)
+}
 
 function findSavedMeme(id) {
   const memes = getSavedMems()
