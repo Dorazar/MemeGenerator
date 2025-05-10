@@ -1,0 +1,83 @@
+.editor {
+  margin-top: 50px;
+  gap: 10px;
+  padding: 20px;
+  background-color: var(--second-color);
+  grid-area: main-content;
+  grid-template-columns: 1fr 0.5fr;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+.editor-btns {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: var(--text-color);
+
+  background-color: var(--main-background);
+  display: grid;
+  width: fit-content;
+  grid-template-rows: repeat(5,1fr);
+  width: 100%;
+}
+
+.editor-btns button {
+    cursor: pointer;
+    border: 1px solid;
+  border-radius: 10px;
+  border-color: var(--text-color);
+    background-color: var(--second-color);
+    
+}
+
+
+.line-editors button {
+    height: 50px;
+    width: 50px;
+}
+
+.row-align-ediors button  {
+    height: 50px;
+    width: 50px;
+}
+
+label {
+  color: var(--text-color);
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.text-input,#colorPicker {
+  align-self: center;
+  justify-self: center;
+  height: 40%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.line-editors,
+.row-align-ediors,
+.font-choose,
+.download-and-share {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-evenly;
+
+  align-content: center;
+}
+
+.font-choose {
+  display: grid;
+
+}
+
+#fonts {
+
+  width: 100%;
+}
+

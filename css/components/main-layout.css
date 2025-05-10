@@ -1,0 +1,9 @@
+.main-layout {
+  background-color: var(--main-background);
+  display: grid;
+  grid-template-columns: minmax(10px, 1fr) minmax(auto, 800px) minmax(10px, 1fr);
+  grid-template-rows: 60px 1fr;
+  grid-template-areas:
+    '. header .'
+    '. main-content .';
+}

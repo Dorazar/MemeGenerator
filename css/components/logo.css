@@ -1,0 +1,9 @@
+.logo {
+  cursor: pointer;
+  font-family: 'Bungee', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  grid-column: 2/2;
+  justify-self: start;
+  align-self: center;
+}

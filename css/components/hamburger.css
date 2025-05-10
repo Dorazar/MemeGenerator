@@ -1,11 +1,9 @@
-
-  
-  
-  
 .hamburger {
-    transition: transform 1s ease;
-  }
-  .menu-open .hamburger {
-    transform: rotate(90deg);
-  }
-  
+  transition: transform 1s ease;
+}
+.menu-open .hamburger {
+  transform: rotate(90deg);
+}
+.hamburger {
+  display: none;
+}

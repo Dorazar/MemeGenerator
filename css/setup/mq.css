@@ -1,0 +1,136 @@
+@media (max-width: 770px) {
+  * {
+    font-size: 1rem;
+  }
+  .main-layout {
+    background-color: var(--main-background);
+    display: grid;
+    grid-template-columns: minmax(10px, 1fr) minmax(420px, 750px) minmax(10px, 1fr);
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+      '. header .'
+      '. main-content .';
+  }
+  /* NAV */
+  .gallery-container {
+    grid-area: main-content;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+  }
+
+  .gallery > * {
+    width: 125px;
+    height: 125px;
+    object-fit: cover;
+  }
+
+  .gallery {
+    display: grid;
+
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, 125px);
+    /* grid-template-rows: repeat(5,150px); */
+    justify-content: center;
+
+    align-content: start;
+    /* height:450px; */
+  }
+
+  .editor {
+    grid-auto-flow: column;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .editor .canvas-container {
+    grid-column: 1/-1;
+  }
+
+  .editor .editor-btns {
+    gap: 10px;
+    grid-column: 1/-1;
+  }
+
+  .input-row .text-input {
+    height: 60%;
+    width: 60%;
+  }
+
+  .input-row {
+    width: 100%;
+  }
+
+  .input-row .text-input {
+    width: 80%;
+  }
+  .input-row #colorPicker {
+    height: 40px;
+    width: 40px;
+  }
+
+  #colorPicker {
+    justify-self: start;
+  }
+
+  .font-choose label {
+    font-size: 1.2rem;
+    align-self: center;
+  }
+  .font-choose #fonts {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: fixed;
+    inset: 0 0 0 auto;
+    height: 100dvh;
+    background-color: var(--second-color);
+    top: 61px;
+    width: 50dvw;
+    transform: translate(100%);
+    cursor: pointer;
+    transition: transform 0.8s;
+  }
+  nav > * {
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-content: center;
+    box-shadow: 0px 1px var(--text-color);
+  }
+
+  nav > :first-child {
+    box-shadow: 0px 1px var(--text-color);
+  }
+
+  .hamburger {
+    font-size: 2rem;
+    display: block;
+    justify-self: end;
+    cursor: pointer;
+  }
+
+  body.menu-open nav {
+    transform: translateX(0);
+  }
+
+  .main-screen {
+    background-color: rgba(0, 0, 0, 50%);
+    inset: 0;
+    position: fixed;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    transform: opacity 0.8s;
+  }
+
+  body.menu-open .main-screen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

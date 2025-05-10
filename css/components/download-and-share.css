@@ -1,0 +1,28 @@
+.download-and-share button {
+    height: 50px;
+    width: 50px;
+}
+
+.material-symbols-outlined:not(.upload-icon) {
+    text-align: center;
+    color: var(--text-color) !important;            
+    -webkit-text-fill-color:var(--text-color) !important; 
+  }
+
+  .download-and-share {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.fa-square-facebook {
+  font-size: 24px;
+  color: var(--text-color);
+}
+
+.download-and-share  button:hover {
+  
+  animation: pulse; 
+  animation-duration: 0.5s; 
+}

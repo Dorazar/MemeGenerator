@@ -1,0 +1,27 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  grid-column: 3/3;
+  z-index: 999;
+}
+
+nav > *{
+    cursor: pointer;
+}
+.profile-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+}
+
+.profile-nav {
+  text-decoration: none;
+}
+
+
+.fa-linkedin,.fa-github {
+font-size: 1.5rem;
+}

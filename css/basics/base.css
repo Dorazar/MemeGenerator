@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Comic Neue', cursive;
+}
+
+/* html{
+  height: 100vh;
+} */
+body {
+  height: 100vh;
+}
+
+.canvas-container {
+  /* background-color: red;   */
+  width: 100%;
+}
+
+.editor {
+  display: none;
+}
+
+canvas {
+  width: 100%;
+  border: 1px solid grey;
+  /* background-color: grey;  */
+  border-radius: 10px;
+  border-color: var(--text-color);
+}
